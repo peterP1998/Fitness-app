@@ -6,11 +6,11 @@ import {
   TouchableOpacity,
   Modal,
   Pressable,
-} from 'react-native'
-import React, { useState } from 'react'
-import Header from './header/header'
-import WorkoutCreate from './workout/create/WorkoutCreate'
-import WorkoutContinue from './workout/continue/WorkoutContinue'
+} from 'react-native';
+import React, {useState} from 'react';
+import Header from './header/header';
+import WorkoutCreate from './workout/create/WorkoutCreate';
+import WorkoutContinue from './workout/continue/WorkoutContinue';
 
 export default function HomePage() {
   return (
@@ -19,7 +19,7 @@ export default function HomePage() {
       <WorkoutCreate />
       <WorkoutContinue />
     </SafeAreaView>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -30,4 +30,4 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     backgroundColor: 'white',
   },
-})
+});

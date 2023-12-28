@@ -1,47 +1,55 @@
-import React from 'react'
-import { View, Text, StyleSheet, Pressable } from 'react-native'
-import Icon from 'react-native-vector-icons/FontAwesome'
-import { ViewWeek } from '@mui/icons-material'
-import { useNavigation } from '@react-navigation/native'
-import { Workout } from '../../../../model/Workout'
+import React from 'react';
+import {View, Text, StyleSheet, Pressable} from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import {ViewWeek} from '@mui/icons-material';
+import {useNavigation} from '@react-navigation/native';
+import {Workout} from '../../../../model/Workout';
 
 type WorkoutCardProps = {
-  workout: Workout
-}
+  workout: Workout;
+};
 
-export const WorkoutCard: React.FC<WorkoutCardProps> = ({ workout }) => {
-  const navigation = useNavigation()
+export const WorkoutCard: React.FC<WorkoutCardProps> = ({workout}) => {
+  const navigation = useNavigation();
 
   const navigateToWorkoutPage = async () => {
-    ;(navigation as any).navigate('WorkoutPage', { workoutId: workout.id })
-  }
+    (navigation as any).navigate('WorkoutPage', {workoutId: workout.id});
+  };
 
   return workout !== null ? (
     <Pressable onPress={navigateToWorkoutPage}>
       <View style={styles.container}>
         <Text style={styles.text}>{workout.name}</Text>
-        <View style={{ flexDirection: 'row', paddingLeft: '2%' }}>
+        <View style={{flexDirection: 'row', paddingLeft: '2%'}}>
           <Icon
-            name="rocket"
+            name="clock-o"
             size={20}
             color={'black'}
-            style={{ flex: 1, alignContent: 'flex-start' }}
-          ></Icon>
+            style={{flex: 1, alignContent: 'flex-start'}}
+          />
           <Text
             style={{
               flex: 5,
               alignContent: 'flex-start',
               fontSize: 18,
               color: 'black',
-            }}
-          >
+            }}>
             {workout.length} minutes
+          </Text>
+          <Text
+            style={{
+              flex: 5,
+              alignContent: 'flex-start',
+              fontSize: 18,
+              color: 'black',
+            }}>
+            {workout.status}
           </Text>
         </View>
       </View>
     </Pressable>
-  ) : null
-}
+  ) : null;
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -72,4 +80,4 @@ const styles = StyleSheet.create({
   secondColumn: {
     flex: 1,
   },
-})
+});

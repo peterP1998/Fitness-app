@@ -1,54 +1,54 @@
-import React, { useEffect, useState } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
-import Icon from 'react-native-vector-icons/FontAwesome'
+import React, {useEffect, useState} from 'react';
+import {View, Text, StyleSheet} from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import {
   ParamListBase,
   RouteProp,
   useIsFocused,
   useNavigation,
   useRoute,
-} from '@react-navigation/native'
-import { NativeStackScreenProps } from '@react-navigation/native-stack'
-import { SafeAreaView } from 'react-native-safe-area-context'
-import { getWorkoutById } from '../../../service/WorkoutService'
-import { ExerciseList } from '../../exercise/exerciseList/ExerciseList'
-import { Workout, WorkoutStatus } from '../../../model/Workout'
+} from '@react-navigation/native';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import {getWorkoutById} from '../../../service/WorkoutService';
+import {ExerciseList} from '../../exercise/exerciseList/ExerciseList';
+import {Workout, WorkoutStatus} from '../../../model/Workout';
 
 type RootStackParamList = {
-  WorkoutPage: { workoutId: string }
-}
+  WorkoutPage: {workoutId: string};
+};
 
-type Props = NativeStackScreenProps<RootStackParamList, 'WorkoutPage'>
+type Props = NativeStackScreenProps<RootStackParamList, 'WorkoutPage'>;
 
 type RouteParams = {
-  workoutId: number
-}
+  workoutId: number;
+};
 export const WorkoutPage = () => {
-  const route = useRoute()
-  const { workoutId }: RouteParams = route.params as RouteParams
+  const route = useRoute();
+  const {workoutId}: RouteParams = route.params as RouteParams;
 
-  const [workout, setWorkout] = useState<Workout>()
+  const [workout, setWorkout] = useState<Workout>();
   const isFocused = useIsFocused();
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const fetchedWorkout = await getWorkoutById(workoutId)
-        setWorkout(fetchedWorkout)
+        const fetchedWorkout = await getWorkoutById(workoutId);
+        setWorkout(fetchedWorkout);
       } catch (error) {
-        console.error('Error fetching workouts:', error)
+        console.error('Error fetching workouts:', error);
       }
     }
 
-    fetchData()
-  }, [isFocused])
+    fetchData();
+  }, [isFocused]);
 
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.workoutName}> {workout?.name} </Text>
       <View style={styles.calendarStyle}>
         <Icon name="calendar" size={25} color={'black'} />
-        <Text style={{ fontSize: 20 }}> {workout?.startdate} </Text>
+        <Text style={{fontSize: 20}}> {workout?.startdate} </Text>
       </View>
       <View
         style={{
@@ -57,11 +57,11 @@ export const WorkoutPage = () => {
           width: '90%',
           alignSelf: 'center',
         }}
-      ></View>
+      />
       <ExerciseList workoutId={workoutId} workoutStatus={workout?.status} />
     </SafeAreaView>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -75,4 +75,4 @@ const styles = StyleSheet.create({
     margin: '5%',
     flexDirection: 'row',
   },
-})
+});

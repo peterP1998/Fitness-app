@@ -8,37 +8,37 @@ import {
   Pressable,
   TextInput,
   TouchableWithoutFeedback,
-} from 'react-native'
-import Icon from 'react-native-vector-icons/FontAwesome'
-import React, { useState } from 'react'
-import { Image } from 'react-native'
-import Box from '../../common/box/box'
-import { addWorkout, fetchWorkouts } from '../../../service/WorkoutService'
-import { useNavigation } from '@react-navigation/native'
+} from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import React, {useState} from 'react';
+import {Image} from 'react-native';
+import Box from '../../common/box/box';
+import {addWorkout, fetchWorkouts} from '../../../service/WorkoutService';
+import {useNavigation} from '@react-navigation/native';
 
-type WorkoutCreateProps = {}
+type WorkoutCreateProps = {};
 
 const WorkoutCreate: React.FC<WorkoutCreateProps> = ({}) => {
-  const [dialogVisible, setDialogVisible] = useState(false)
-  const [nameOfWorkout, setNameOfWorkout] = useState('')
+  const [dialogVisible, setDialogVisible] = useState(false);
+  const [nameOfWorkout, setNameOfWorkout] = useState('');
 
-  const showDialog = () => setDialogVisible(true)
+  const showDialog = () => setDialogVisible(true);
 
-  const navigation = useNavigation()
+  const navigation = useNavigation();
 
   const handleCancel = () => {
-    setDialogVisible(false)
-    setNameOfWorkout('')
-  }
+    setDialogVisible(false);
+    setNameOfWorkout('');
+  };
 
   const createWorkout = async () => {
-    const idOfCreatedWorkout = await addWorkout(nameOfWorkout)
-    setNameOfWorkout('')
+    const idOfCreatedWorkout = await addWorkout(nameOfWorkout);
+    setNameOfWorkout('');
     setDialogVisible(false);
     (navigation as any).navigate('WorkoutPage', {
       workoutId: idOfCreatedWorkout,
-    })
-  }
+    });
+  };
 
   return (
     <>
@@ -46,21 +46,19 @@ const WorkoutCreate: React.FC<WorkoutCreateProps> = ({}) => {
         title={'New Workout'}
         imageSource={'../../../assets/create-workout.jpg'}
         onPressButton={showDialog}
-      ></Box>
+      />
       <Modal
         animationType="slide"
         transparent={true}
         visible={dialogVisible}
         onRequestClose={handleCancel}
         style={styles.modal}
-        onDismiss={handleCancel}
-      >
+        onDismiss={handleCancel}>
         <TouchableWithoutFeedback
           style={styles.touchableOpacity}
-          onPressOut={(e) => {
-            handleCancel()
-          }}
-        >
+          onPressOut={e => {
+            handleCancel();
+          }}>
           <View style={styles.modalContainer}>
             <View style={styles.modalContent}>
               <Text style={styles.textCreateWorkout}>Create workout</Text>
@@ -79,8 +77,8 @@ const WorkoutCreate: React.FC<WorkoutCreateProps> = ({}) => {
         </TouchableWithoutFeedback>
       </Modal>
     </>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   modal: {
@@ -110,7 +108,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     textShadowColor: 'rgba(0, 0, 0, 0.5)',
-    textShadowOffset: { width: 2, height: 2 },
+    textShadowOffset: {width: 2, height: 2},
     padding: 10,
   },
   button: {
@@ -139,6 +137,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'rgba(0,0,0,0.62)',
   },
-})
+});
 
-export default WorkoutCreate
+export default WorkoutCreate;

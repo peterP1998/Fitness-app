@@ -6,34 +6,34 @@ import {
   TouchableOpacity,
   Modal,
   Pressable,
-} from 'react-native'
-import Icon from 'react-native-vector-icons/FontAwesome'
-import React, { useEffect, useState } from 'react'
-import { Image } from 'react-native'
-import Box from '../../common/box/box'
+} from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import React, {useEffect, useState} from 'react';
+import {Image} from 'react-native';
+import Box from '../../common/box/box';
 import {
   fetchWorkouts,
   getAllWorkoutsInProgress,
-} from '../../../service/WorkoutService'
-import { Workout } from '../../../model/Workout'
+} from '../../../service/WorkoutService';
+import {Workout} from '../../../model/Workout';
 //const {useRealm, useQuery} = realmContext;
 export default function WorkoutContinue() {
   //const workouts = useQuery(Workout)
   //console.log(workouts)
-  const [workouts, setWorkouts] = useState<Workout[]>([])
+  const [workouts, setWorkouts] = useState<Workout[]>([]);
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const fetchedWorkouts = await getAllWorkoutsInProgress()
-        setWorkouts(fetchedWorkouts)
+        const fetchedWorkouts = await getAllWorkoutsInProgress();
+        setWorkouts(fetchedWorkouts);
       } catch (error) {
-        console.error('Error fetching workouts:', error)
+        console.error('Error fetching workouts:', error);
       }
     }
 
-    fetchData()
-  }, [])
+    fetchData();
+  }, []);
   return workouts.length === 0 ? (
     <Box
       title={'No Workouts In Progress'}
@@ -48,7 +48,7 @@ export default function WorkoutContinue() {
       onPressButton={() => {}}
       hide={false}
     />
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -62,4 +62,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
   },
-})
+});

@@ -8,61 +8,61 @@ import {
   Pressable,
   TouchableWithoutFeedback,
   TouchableHighlight,
-} from 'react-native'
-import Icon from 'react-native-vector-icons/FontAwesome'
-import React, { useState } from 'react'
-import { useNavigation } from '@react-navigation/native'
+} from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import React, {useState} from 'react';
+import {useNavigation} from '@react-navigation/native';
 
 export default function Header() {
-  const [modalVisible, setModalVisible] = useState(false)
-  const navigation = useNavigation()
+  const [modalVisible, setModalVisible] = useState(false);
+  const navigation = useNavigation();
 
   const toggleDropdown = () => {
-    setModalVisible(!modalVisible)
+    setModalVisible(!modalVisible);
     //;(navigation as any).navigate('PreviousWorkoutsPage')
-  }
+  };
 
   const closeModal = () => {
     setModalVisible(false);
-  }
+  };
 
   const navigateToPreviousWorkoutsPage = () => {
     setModalVisible(false);
-    (navigation as any).navigate('PreviousWorkoutsPage')
-  }
+    (navigation as any).navigate('PreviousWorkoutsPage');
+  };
   return (
     <SafeAreaView style={styles.container}>
       <>
         <Pressable style={styles.iconcontainer} onPress={toggleDropdown}>
-          <Icon name="list" style={styles.icon}></Icon>
+          <Icon name="list" style={styles.icon} />
         </Pressable>
         <Modal
           animationType="slide"
           transparent={true}
           visible={modalVisible}
           onRequestClose={closeModal}
-          onDismiss={closeModal}
-        >
-           <TouchableWithoutFeedback
-          style={styles.touchableOpacity}
-          onPressOut={(e) => {
-            closeModal()
-          }}
-        >
-          <SafeAreaView style={styles.modalView}>
-            <View style={styles.modalContent}>
-              <Pressable style={styles.buttonContainer} onPress={navigateToPreviousWorkoutsPage}>
-                <Text>Previous Workouts</Text>
-              </Pressable>
-            </View>
-          </SafeAreaView>
+          onDismiss={closeModal}>
+          <TouchableWithoutFeedback
+            style={styles.touchableOpacity}
+            onPressOut={e => {
+              closeModal();
+            }}>
+            <SafeAreaView style={styles.modalView}>
+              <View style={styles.modalContent}>
+                <Pressable
+                  style={styles.buttonContainer}
+                  onPress={navigateToPreviousWorkoutsPage}>
+                  <Text>Previous Workouts</Text>
+                </Pressable>
+              </View>
+            </SafeAreaView>
           </TouchableWithoutFeedback>
         </Modal>
 
         <Text style={styles.text}>Fitness Tracker</Text>
       </>
     </SafeAreaView>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -115,6 +115,7 @@ const styles = StyleSheet.create({
     fontSize: 32,
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
+    shadowColor: 'Gray'
   },
   closeIcon: {
     fontSize: 32,
@@ -128,4 +129,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'rgba(0,0,0,0.62)',
   },
-})
+});
