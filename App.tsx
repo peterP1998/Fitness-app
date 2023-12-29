@@ -8,6 +8,7 @@ import {WorkoutPage} from './components/workout/workoutPage/WorkoutPage';
 import HomePage from './components/Homepage';
 import {MuscleGroupsCategoryList} from './components/muscle/muscleCategoryList/MuscleGroupsCategoryList';
 import {ExerciseCreate} from './components/exercise/exerciseCreate/ExerciseCreate';
+import {ExerciseDetails} from './components/exercise/exerciseDetails/ExerciseDetails';
 
 const Stack = createNativeStackNavigator();
 export const db = connectToDatabase();
@@ -29,6 +30,7 @@ export default function App() {
           component={MuscleGroupsCategoryList}
         />
         <Stack.Screen name="ExerciseCreate" component={ExerciseCreate} />
+        <Stack.Screen name="ExerciseDetails" component={ExerciseDetails} />
       </Stack.Navigator>
     </NavigationContainer>
   );

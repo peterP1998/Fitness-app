@@ -34,7 +34,7 @@ export function getSetsForExercise(
           const rows = results.rows;
           const exerciseSets: ExerciseSet[] = [];
 
-          console.log(rows)
+          console.log(rows);
           for (let i = 0; i < rows.length; i++) {
             const exercise: ExerciseSet = rows.item(i) as ExerciseSet;
             exerciseSets.push(exercise);

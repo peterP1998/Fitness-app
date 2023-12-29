@@ -29,12 +29,11 @@ export default function Box(props: BoxPropTypes) {
     <SafeAreaView style={styles.container}>
       <ImageBackground source={imageSources.image1} style={styles.image}>
         <View style={styles.firstColumn}>
-          <Text style={styles.text}>{props.title}</Text>
           {!props?.hide && (
             <Pressable
               style={styles.iconcontainer}
               onPress={props.onPressButton}>
-              <Icon name="arrow-right" style={styles.arrow} />
+              <Text style={styles.text}>{props.title}</Text>
             </Pressable>
           )}
         </View>
@@ -58,16 +57,18 @@ const styles = StyleSheet.create({
   },
   arrow: {
     fontSize: 40,
-    color: 'white',
+    color: '#8acbde',
   },
   firstColumn: {
     flex: 2,
+    alignContent: 'center',
   },
   text: {
     fontSize: 32,
     padding: 10,
     textAlign: 'center',
     color: 'white',
+    justifyContent: 'center', // Align text vertically within Pressable
   },
   image: {
     flex: 1,

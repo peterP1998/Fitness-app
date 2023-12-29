@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import Ionicon from 'react-native-vector-icons/Ionicons';
 import {
   ParamListBase,
   RouteProp,
@@ -13,6 +14,7 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import {getWorkoutById} from '../../../service/WorkoutService';
 import {ExerciseList} from '../../exercise/exerciseList/ExerciseList';
 import {Workout, WorkoutStatus} from '../../../model/Workout';
+import {PageTitle} from '../../common/pageTitle/PageTitle';
 
 type RootStackParamList = {
   WorkoutPage: {workoutId: string};
@@ -45,7 +47,7 @@ export const WorkoutPage = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.workoutName}> {workout?.name} </Text>
+      <PageTitle title={workout?.name ?? ''} />
       <View style={styles.calendarStyle}>
         <Icon name="calendar" size={25} color={'black'} />
         <Text style={{fontSize: 20}}> {workout?.startdate} </Text>
@@ -69,10 +71,11 @@ const styles = StyleSheet.create({
   },
   workoutName: {
     fontSize: 30,
-    margin: '3%',
+    flex: 1,
   },
   calendarStyle: {
     margin: '5%',
     flexDirection: 'row',
+    justifyContent: 'center',
   },
 });

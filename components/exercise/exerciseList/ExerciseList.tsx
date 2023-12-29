@@ -36,7 +36,8 @@ export const ExerciseList: React.FC<ExerciseListProps> = ({
   return (
     <ScrollView contentContainerStyle={styles.scrollView}>
       <View style={styles.container}>
-        {exercises.map((exercise) => {
+        {isWorkoutInProgress && <ExerciseCreateCard workoutId={workoutId} />}
+        {exercises.map(exercise => {
           return (
             <ExerciseCard
               key={exercise.id}
@@ -45,7 +46,6 @@ export const ExerciseList: React.FC<ExerciseListProps> = ({
             />
           );
         })}
-         {isWorkoutInProgress && <ExerciseCreateCard workoutId={workoutId} />}
       </View>
     </ScrollView>
   );

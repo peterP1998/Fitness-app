@@ -52,7 +52,7 @@ export default function Header() {
                 <Pressable
                   style={styles.buttonContainer}
                   onPress={navigateToPreviousWorkoutsPage}>
-                  <Text>Previous Workouts</Text>
+                  <Text style={{fontSize: 32}}>Previous Workouts</Text>
                 </Pressable>
               </View>
             </SafeAreaView>
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
     fontSize: 32,
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
-    shadowColor: 'Gray'
+    shadowColor: 'Gray',
   },
   closeIcon: {
     fontSize: 32,

@@ -4,6 +4,7 @@ import {WorkoutCard} from './manageWorkout/WorkoutCard';
 import {fetchWorkouts} from '../../../service/WorkoutService';
 import {fetchExercises} from '../../../service/ExerciseService';
 import {Workout} from '../../../model/Workout';
+import {PageTitle} from '../../common/pageTitle/PageTitle';
 
 type PreviousWorkoutListsProps = {};
 
@@ -26,7 +27,7 @@ export const PreviousWorkoutLists: React.FC<
 
   return (
     <SafeAreaView style={{height: '100%'}}>
-      <Text style={styles.workoutTitle}>Workouts</Text>
+      <PageTitle title={'Workouts'} />
       <ScrollView
         contentContainerStyle={{flexGrow: 1, flexDirection: 'column'}}>
         {workouts.map(workout => (
