@@ -10,15 +10,17 @@ import {
 } from 'react-native';
 type ConfirmationDialogProps = {
   confirmationText: string;
-  functionToBeFired: () => void;
+  functionToBeFired: (id: number) => void;
   visible: boolean;
   handleCancel: () => void;
+  idOfEntity: number;
 };
 export const ConfirmationDialog: React.FC<ConfirmationDialogProps> = ({
   confirmationText,
   functionToBeFired,
   visible,
   handleCancel,
+  idOfEntity
 }) => {
   return (
     <Modal
@@ -38,7 +40,7 @@ export const ConfirmationDialog: React.FC<ConfirmationDialogProps> = ({
             <Text style={styles.textCreateWorkout}> {confirmationText} </Text>
             <View
               style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-              <Pressable style={styles.button} onPress={functionToBeFired}>
+              <Pressable style={styles.button} onPress={() => functionToBeFired(idOfEntity)}>
                 <Text style={styles.buttonText}> Yes </Text>
               </Pressable>
               <Pressable style={styles.button} onPress={handleCancel}>

@@ -1,3 +1,36 @@
 class ExerciseConfig {
-  constructor(public id: number, public name: string) {}
+  constructor(public id: number, public name: ExerciseName) {}
+}
+
+enum ExerciseName {
+  PUSH_UPS = 'Push-Ups',
+  PULL_UPS_CHIN_UPS = 'Pull-Ups/Chin-Ups',
+  SQUATS = 'Squats',
+  DEADLIFTS = 'Deadlifts',
+  LUNGES = 'Lunges',
+  PLANKS = 'Planks',
+  BURPEES = 'Burpees',
+  DUMBBELL_ROWS = 'Dumbbell Rows',
+  BENCH_PRESS = 'Bench Press',
+  SHOULDER_PRESS = 'Shoulder Press',
+  RUSSIAN_TWISTS = 'Russian Twists',
+  MOUNTAIN_CLIMBERS = 'Mountain Climbers',
+  JUMP_SQUATS = 'Jump Squats',
+  LEG_PRESS = 'Leg Press',
+  CALF_RAISES = 'Calf Raises',
+  BICEP_CURLS = 'Bicep Curls',
+  TRICEP_DIPS = 'Tricep Dips',
+  HANGING_LEG_RAISES = 'Hanging Leg Raises',
+  KETTLEBELL_SWINGS = 'Kettlebell Swings',
+  BOX_JUMPS = 'Box Jumps',
+  HIP_THRUSTS = 'Hip Thrusts',
+  REVERSE_FLYES = 'Reverse Flyes',
+  BICYCLE_CRUNCHES = 'Bicycle Crunches',
+  FLUTTER_KICKS = 'Flutter Kicks',
+  LAT_PULLDOWNS = 'Lat Pulldowns',
+  BARBELL_HIP_THRUSTS = 'Barbell Hip Thrusts',
+  ROMANIAN_DEADLIFTS = 'Romanian Deadlifts',
+  SIDE_PLANKS = 'Side Planks',
+  SEATED_CABLE_ROWS = 'Seated Cable Rows',
+  BATTLE_ROPES = 'Battle Ropes',
 }

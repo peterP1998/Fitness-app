@@ -55,6 +55,14 @@ export default function Header() {
                   <Text style={{fontSize: 32}}>Previous Workouts</Text>
                 </Pressable>
               </View>
+              <View
+        style={{
+          borderColor: 'black',
+          borderWidth: 1,
+          width: '90%',
+          alignSelf: 'center',
+        }}
+      />
             </SafeAreaView>
           </TouchableWithoutFeedback>
         </Modal>
@@ -93,8 +101,7 @@ const styles = StyleSheet.create({
   },
   modalView: {
     flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
+    flexDirection: 'column',
     alignItems: 'baseline',
     backgroundColor: 'white',
     width: '50%',

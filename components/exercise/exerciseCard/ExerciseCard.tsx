@@ -14,7 +14,7 @@ import {fetchExerciseFullInformationForExerciseId} from '../../../service/Exerci
 import {useNavigation} from '@react-navigation/native';
 import {AddSetToExercise} from '../../sets/SetsCreation/CreateExerciseSet';
 import {addSetToExercise} from '../../../service/ExerciseSetService';
-import {ExerciseDetails} from '../exerciseDetails/ExerciseDetails';
+import { exerciseImages } from '../../../config/ExerciseImagesConfig';
 
 type ExerciseCardProps = {
   exerciseId: number;
@@ -43,6 +43,8 @@ export const ExerciseCard: React.FC<ExerciseCardProps> = ({
     fetchData();
   }, []);
 
+  const exerciseImage = '../../../assets/' + exerciseImages['Push-Ups'];
+
   return (
     <View style={styles.container}>
       <Pressable
@@ -50,6 +52,7 @@ export const ExerciseCard: React.FC<ExerciseCardProps> = ({
           (navigation as any).navigate('ExerciseDetails', {
             exerciseConfigId: exerciseConfigId,
             exerciseId: exerciseId,
+            exerciseName: exercise?.name
           });
         }}
         style={{flex: 1}}>
@@ -66,7 +69,7 @@ export const ExerciseCard: React.FC<ExerciseCardProps> = ({
         }}>
         <ImageBackground
           style={{flex: 1}}
-          source={require('../../../assets/push-ups.jpeg')}
+          source={exerciseImages[exercise?.name ?? 'Bicep Curls']}
           resizeMode="cover"
         />
       </View>

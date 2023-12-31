@@ -28,6 +28,5 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'thistle',
     borderRadius: 50,
-    backgroundColor: 'white',
   },
 });

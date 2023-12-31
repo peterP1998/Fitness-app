@@ -63,6 +63,7 @@ export const MuscleGroupsCategoryList = () => {
         {muscleGroups.map(muscle => {
           return (
             <View
+            key={muscle.name}
               style={{flexBasis: '40%', alignSelf: 'center', paddingLeft: 50}}>
               <MuscleGroupsCategoryCard
                 muscleName={muscle.name}

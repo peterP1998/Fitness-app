@@ -23,14 +23,14 @@ export const WorkoutCard: React.FC<WorkoutCardProps> = ({
     (navigation as any).navigate('WorkoutPage', {workoutId: workout.id});
   };
 
-  const handleDeleteClick = () => {
-    deleteWorkout(workout.id);
+  const handleDeleteClick = (workoutId: number) => {
+    deleteWorkout(workoutId);
     setDialogDeleteVisible(false);
     fetchWorkouts();
   };
 
-  const handleFinishClick = () => {
-    finishWorkout(workout.id);
+  const handleFinishClick = (workoutId: number) => {
+    finishWorkout(workoutId);
     setFinishDialogVisible(false);
     fetchWorkouts();
   };
@@ -46,6 +46,7 @@ export const WorkoutCard: React.FC<WorkoutCardProps> = ({
         handleCancel={() => {
           setDialogDeleteVisible(false);
         }}
+        idOfEntity={workout.id}
       />
       <ConfirmationDialog
         functionToBeFired={handleFinishClick}
@@ -54,6 +55,7 @@ export const WorkoutCard: React.FC<WorkoutCardProps> = ({
         handleCancel={() => {
           setFinishDialogVisible(false);
         }}
+        idOfEntity={workout.id}
       />
       <View style={styles.container}>
         <View style={styles.row}>

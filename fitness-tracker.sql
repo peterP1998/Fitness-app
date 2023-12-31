@@ -12,8 +12,8 @@ CREATE TABLE IF NOT EXISTS "exercise" (
 	"workout_id"	INTEGER,
 	"exercise_config_id"	INTEGER,
 	PRIMARY KEY("id"),
-	FOREIGN KEY("exercise_config_id") REFERENCES "exercise_config"("id"),
-	FOREIGN KEY("workout_id") REFERENCES "workout"("id")
+	FOREIGN KEY("exercise_config_id") REFERENCES "exercise_config"("id") ON DELETE CASCADE,
+	FOREIGN KEY("workout_id") REFERENCES "workout"("id") ON DELETE CASCADE
 );
 CREATE TABLE IF NOT EXISTS "exercise_config" (
 	"id"	INTEGER,
@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS "exercise_set" (
 	"weight"	REAL,
 	"exercise_id"	INTEGER,
 	PRIMARY KEY("id"),
-	FOREIGN KEY("exercise_id") REFERENCES "exercise"("id")
+	FOREIGN KEY("exercise_id") REFERENCES "exercise"("id") ON DELETE CASCADE
 );
 CREATE TABLE IF NOT EXISTS "muscle_group" (
 	"id"	INTEGER,
