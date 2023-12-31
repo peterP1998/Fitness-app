@@ -28,11 +28,9 @@ export default function Box(props: BoxPropTypes) {
   return (
     <SafeAreaView style={styles.container}>
       <ImageBackground source={imageSources.image1} style={styles.image}>
-        <View style={styles.firstColumn}>
+        <View style={styles.content}>
           {!props?.hide && (
-            <Pressable
-              style={styles.iconcontainer}
-              onPress={props.onPressButton}>
+            <Pressable style={styles.iconcontainer} onPress={props.onPressButton}>
               <Text style={styles.text}>{props.title}</Text>
             </Pressable>
           )}
@@ -48,27 +46,22 @@ const styles = StyleSheet.create({
     maxHeight: '20%',
     margin: 15,
     alignItems: 'center',
-    flexDirection: 'row',
     backgroundColor: 'lightgrey',
     borderWidth: 2, // Border width
     borderColor: 'black', // Border color
     borderRadius: 20, // Border radius
     overflow: 'hidden',
   },
-  arrow: {
-    fontSize: 40,
-    color: '#8acbde',
-  },
-  firstColumn: {
-    flex: 2,
-    alignContent: 'center',
+  content: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   text: {
     fontSize: 32,
     padding: 10,
     textAlign: 'center',
     color: 'white',
-    justifyContent: 'center', // Align text vertically within Pressable
   },
   image: {
     flex: 1,
@@ -77,9 +70,10 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   iconcontainer: {
-    alignItems: 'center',
-  },
-  secondColumn: {
     flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+    height: '100%',
   },
 });

@@ -35,8 +35,16 @@ export const ExerciseList: React.FC<ExerciseListProps> = ({
   const isWorkoutInProgress = workoutStatus === WorkoutStatus.IN_PROGRESS;
   return (
     <ScrollView contentContainerStyle={styles.scrollView}>
+      {isWorkoutInProgress && <View><ExerciseCreateCard workoutId={workoutId} /> 
+       <View
+       style={{
+         borderColor: 'black',
+         borderWidth: 1,
+         width: '90%',
+         alignSelf: 'center',
+       }}
+     /></View>}
       <View style={styles.container}>
-        {isWorkoutInProgress && <ExerciseCreateCard workoutId={workoutId} />}
         {exercises.map(exercise => {
           return (
             <ExerciseCard
@@ -56,9 +64,8 @@ const styles = StyleSheet.create({
     flexGrow: 1,
   },
   container: {
-    flexWrap: 'wrap',
-    flexDirection: 'row',
-    paddingBottom: 100,
+    flexDirection: 'column',
+    paddingBottom: 10,
   },
   workoutName: {
     fontSize: 30,

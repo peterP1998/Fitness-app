@@ -32,7 +32,7 @@ export const ExerciseCreateCard: React.FC<ExerciseCreateCardProps> = ({
             workoutId: workoutId,
           })
         }>
-        <Icon name="add" size={60} color={'black'} style={styles.addIcon} />
+        <Icon name="add" size={40} color={'black'} style={styles.addIcon} />
       </Pressable>
     </View>
   );
@@ -40,12 +40,8 @@ export const ExerciseCreateCard: React.FC<ExerciseCreateCardProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    padding: '3%',
     margin: '5%',
-    borderWidth: 1,
-    borderRadius: 10,
-    flexBasis: '40%',
-    height: 100,
+    height: 40,
   },
   addIcon: {
     alignSelf: 'center',

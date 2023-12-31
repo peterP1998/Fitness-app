@@ -6,6 +6,7 @@ import {
   Modal,
   TouchableWithoutFeedback,
   TextInput,
+  ImageBackground,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {ExerciseCreateCard} from '../exerciseCreateCard/ExerciseCreateCard';
@@ -26,12 +27,11 @@ export const ExerciseCard: React.FC<ExerciseCardProps> = ({
 }) => {
   const [exercise, setExercise] = useState<ExerciseConfig>();
   const navigation = useNavigation();
+
   useEffect(() => {
     async function fetchData() {
       try {
-        const exercise = await fetchExerciseFullInformationForExerciseId(
-          exerciseId,
-        );
+        const exercise = await fetchExerciseFullInformationForExerciseId(exerciseId);
         setExercise(exercise);
       } catch (error) {
         console.error('Error fetching exercise:', error);
@@ -50,21 +50,30 @@ export const ExerciseCard: React.FC<ExerciseCardProps> = ({
             exerciseId: exerciseId,
           });
         }}
-        style={{justifyContent: 'center', alignSelf: 'center'}}>
-        <Text> {exercise?.name} </Text>
+        style={{ flex: 1 }}
+      >
+        <Text style={{ color: 'white', textAlign: 'center', marginTop: 40 }}>{exercise?.name}</Text>
       </Pressable>
+      <View style={{ flex: 1, overflow: 'hidden', borderTopEndRadius: 10, borderBottomEndRadius: 10 }}>
+        <ImageBackground
+          style={{ flex: 1 }}
+          source={require('../../../assets/push-ups.jpeg')}
+          resizeMode="cover"
+        />
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    padding: '3%',
     margin: '5%',
     borderWidth: 1,
-    borderRadius: 10,
-    flexBasis: '40%',
     height: 100,
-    flexDirection: 'column',
+    borderRadius: 10,
+    flexDirection: 'row',
+    alignContent: 'center',
+    backgroundColor: '#808080'
   },
 });
+

@@ -34,12 +34,13 @@ export default function WorkoutContinue() {
 
     fetchData();
   }, []);
+  console.log(workouts.length)
   return workouts.length === 0 ? (
     <Box
       title={'No Workouts In Progress'}
       imageSource={'../../../assets/create-workout.jpg'}
       onPressButton={() => {}}
-      hide={true}
+      hide={false}
     />
   ) : (
     <Box

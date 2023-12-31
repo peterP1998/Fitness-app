@@ -94,3 +94,39 @@ export async function getWorkoutById(workoutId: number): Promise<Workout> {
     });
   });
 }
+
+export async function finishWorkout(workoutId: number): Promise<Number> {
+  return new Promise((resolve, reject) => {
+    db.transaction(tx => {
+      tx.executeSql(
+        'UPDATE workout SET status = "DONE", length = CAST((julianday("now") - julianday(startDate)) AS INTEGER) WHERE id = ?',
+        [workoutId],
+        (tx, result) => {
+          const idOfWorkout = result.insertId;
+          resolve(idOfWorkout);
+        },
+        error => {
+          reject(error);
+        },
+      );
+    });
+  });
+}
+
+export async function deleteWorkout(workoutId: number): Promise<Number> {
+  return new Promise((resolve, reject) => {
+    db.transaction(tx => {
+      tx.executeSql(
+        'DELETE FROM workout WHERE id = ?',
+        [workoutId],
+        (tx, result) => {
+          const idOfWorkout = result.insertId;
+          resolve(idOfWorkout);
+        },
+        error => {
+          reject(error);
+        },
+      );
+    });
+  });
+}

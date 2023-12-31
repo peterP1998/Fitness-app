@@ -13,17 +13,17 @@ export const PreviousWorkoutLists: React.FC<
 > = ({}) => {
   const [workouts, setWorkouts] = useState<Workout[]>([]);
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const fetchedWorkouts = await fetchWorkouts();
-        setWorkouts(fetchedWorkouts);
-      } catch (error) {
-        console.error('Error fetching workouts:', error);
-      }
-    }
-
     fetchData();
   }, []);
+
+  async function fetchData() {
+    try {
+      const fetchedWorkouts = await fetchWorkouts();
+      setWorkouts(fetchedWorkouts);
+    } catch (error) {
+      console.error('Error fetching workouts:', error);
+    }
+  }
 
   return (
     <SafeAreaView style={{height: '100%'}}>
@@ -31,7 +31,7 @@ export const PreviousWorkoutLists: React.FC<
       <ScrollView
         contentContainerStyle={{flexGrow: 1, flexDirection: 'column'}}>
         {workouts.map(workout => (
-          <WorkoutCard key={workout.id} workout={workout} />
+          <WorkoutCard key={workout.id} workout={workout} fetchWorkouts={fetchData} />
         ))}
       </ScrollView>
     </SafeAreaView>

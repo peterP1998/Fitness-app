@@ -1,49 +1,76 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {View, Text, StyleSheet, Pressable, Image} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {Workout} from '../../../../model/Workout';
 import {useNavigation} from '@react-navigation/native';
+import { deleteWorkout, finishWorkout } from '../../../../service/WorkoutService';
+import { ConfirmationDialog } from '../../../common/confirmationDialog/ConfirmationDialog';
 
 type WorkoutCardProps = {
   workout: Workout;
+  fetchWorkouts: any;
 };
 
-export const WorkoutCard: React.FC<WorkoutCardProps> = ({workout}) => {
+export const WorkoutCard: React.FC<WorkoutCardProps> = ({ workout, fetchWorkouts }) => {
   const navigation = useNavigation();
+  const [dialogDeleteVisible, setDialogDeleteVisible] = useState(false);
+  const [finishDialogVisible, setFinishDialogVisible] = useState(false);
 
   const navigateToWorkoutPage = async () => {
-    (navigation as any).navigate('WorkoutPage', {workoutId: workout.id});
+    (navigation as any).navigate('WorkoutPage', { workoutId: workout.id });
+  };
+
+  const handleDeleteClick = () => {
+    deleteWorkout(workout.id);
+    setDialogDeleteVisible(false);
+    fetchWorkouts();
   };
 
   const handleFinishClick = () => {
-    // Action to be performed when "Finish" is clicked
-    console.log('Workout Finished!');
-  };
+    finishWorkout(workout.id);
+    setFinishDialogVisible(false);
+    fetchWorkouts();
+  }
+
+  const isWorkoutInProgress = workout.status !== 'DONE';
 
   return workout !== null ? (
     <Pressable onPress={navigateToWorkoutPage}>
+      <ConfirmationDialog functionToBeFired={ handleDeleteClick} confirmationText={"Do you want to delete this workout"} visible={dialogDeleteVisible} handleCancel={()=>{ setDialogDeleteVisible(false)}}/>
+      <ConfirmationDialog functionToBeFired={ handleFinishClick} confirmationText={"Do you want to finish this workout"} visible={finishDialogVisible} handleCancel={()=>{ setFinishDialogVisible(false)}}/>
       <View style={styles.container}>
         <View style={styles.row}>
-          <View style={styles.imageContainer}>
+          <View>
             <Image
-              style={{width: 80, height: 80, borderRadius: 40}}
+              style={{ width: 80, height: 80, borderRadius: 40, marginBottom: 10 }}
               source={require('../../../../assets/fitness-man.jpg')}
             />
           </View>
           <View style={styles.textContainer}>
-            <View style={{flex: 1}}>
-              <Text style={styles.text}>{workout.name}</Text>
-              <Pressable style={{}} onPress={handleFinishClick}>
-                <Text style={styles.finishButton}>Finish</Text>
-              </Pressable>
+            <View style={{ flex: 1, justifyContent: 'space-between', flexDirection: 'row',  display: 'flex' }}>
+              <View style={{ justifyContent: 'space-between', flex: 5 }}>
+                <Text style={styles.text}>{workout.name}</Text>
+                { isWorkoutInProgress && <Pressable style={{backgroundColor: '#888888', borderRadius: 30}} onPress={() => { setFinishDialogVisible(true)}}>
+                <Text style={{ flex: 1,  textAlign: 'center', color: 'white'}}> Finish</Text>
+                </Pressable> }
+              </View>
+              <View style={{ marginRight: 4}}>
+                <Pressable onPress={() => { setDialogDeleteVisible(true)}}>
+                <Icon name="trash" size={30} color={'black'} />
+                </Pressable> 
+              </View>
             </View>
-            <Icon name="trash" size={30} color={'black'} />
           </View>
         </View>
-        <View style={styles.infoRow}>
+        <View style={styles.infoColumn}>
+          <View style={{flexDirection: 'row', marginBottom: '2%'}}>
           <Icon name="clock-o" size={20} color={'black'} />
           <Text style={styles.infoText}>{workout.length} minutes</Text>
+          </View>
+          <View style={{flexDirection: 'row'}}>
+            <Icon name={"circle"} size={20} color={isWorkoutInProgress ? 'green' : 'red'}></Icon>
           <Text style={styles.statusText}>{workout.status}</Text>
+          </View>
         </View>
       </View>
     </Pressable>
@@ -59,6 +86,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     width: '90%',
     borderColor: 'black',
+    backgroundColor: 'white',
   },
   row: {
     flexDirection: 'row',
@@ -66,28 +94,28 @@ const styles = StyleSheet.create({
   textContainer: {
     flex: 1,
     paddingLeft: '2%',
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: 'row',    
   },
   text: {
     fontSize: 30,
+    flex: 1,
     color: 'black',
     paddingBottom: '2%',
-    textAlign: 'center',
+    textAlign: 'left',
   },
   finishButton: {
     fontSize: 14,
     color: 'black',
     paddingVertical: 5,
     paddingHorizontal: 10,
-    borderRadius: 3213,
     textAlign: 'center',
     borderColor: 'black',
     elevation: 3,
   },
-  infoRow: {
-    flexDirection: 'row',
+  infoColumn: {
+    flexDirection: 'column',
     paddingBottom: '1%',
+    marginRight: 4,
   },
   infoText: {
     fontSize: 16,
@@ -95,9 +123,8 @@ const styles = StyleSheet.create({
     paddingLeft: '2%',
   },
   statusText: {
-    flex: 1,
     fontSize: 16,
-    textAlign: 'right',
+    paddingLeft: '2%'
   },
   imageContainer: {
     width: 80,
