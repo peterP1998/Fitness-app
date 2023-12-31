@@ -1,23 +1,26 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {View, Text, StyleSheet, Pressable, Image} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {Workout} from '../../../../model/Workout';
 import {useNavigation} from '@react-navigation/native';
-import { deleteWorkout, finishWorkout } from '../../../../service/WorkoutService';
-import { ConfirmationDialog } from '../../../common/confirmationDialog/ConfirmationDialog';
+import {deleteWorkout, finishWorkout} from '../../../../service/WorkoutService';
+import {ConfirmationDialog} from '../../../common/confirmationDialog/ConfirmationDialog';
 
 type WorkoutCardProps = {
   workout: Workout;
   fetchWorkouts: any;
 };
 
-export const WorkoutCard: React.FC<WorkoutCardProps> = ({ workout, fetchWorkouts }) => {
+export const WorkoutCard: React.FC<WorkoutCardProps> = ({
+  workout,
+  fetchWorkouts,
+}) => {
   const navigation = useNavigation();
   const [dialogDeleteVisible, setDialogDeleteVisible] = useState(false);
   const [finishDialogVisible, setFinishDialogVisible] = useState(false);
 
   const navigateToWorkoutPage = async () => {
-    (navigation as any).navigate('WorkoutPage', { workoutId: workout.id });
+    (navigation as any).navigate('WorkoutPage', {workoutId: workout.id});
   };
 
   const handleDeleteClick = () => {
@@ -30,46 +33,97 @@ export const WorkoutCard: React.FC<WorkoutCardProps> = ({ workout, fetchWorkouts
     finishWorkout(workout.id);
     setFinishDialogVisible(false);
     fetchWorkouts();
-  }
+  };
 
   const isWorkoutInProgress = workout.status !== 'DONE';
 
   return workout !== null ? (
     <Pressable onPress={navigateToWorkoutPage}>
-      <ConfirmationDialog functionToBeFired={ handleDeleteClick} confirmationText={"Do you want to delete this workout"} visible={dialogDeleteVisible} handleCancel={()=>{ setDialogDeleteVisible(false)}}/>
-      <ConfirmationDialog functionToBeFired={ handleFinishClick} confirmationText={"Do you want to finish this workout"} visible={finishDialogVisible} handleCancel={()=>{ setFinishDialogVisible(false)}}/>
+      <ConfirmationDialog
+        functionToBeFired={handleDeleteClick}
+        confirmationText={'Do you want to delete this workout'}
+        visible={dialogDeleteVisible}
+        handleCancel={() => {
+          setDialogDeleteVisible(false);
+        }}
+      />
+      <ConfirmationDialog
+        functionToBeFired={handleFinishClick}
+        confirmationText={'Do you want to finish this workout'}
+        visible={finishDialogVisible}
+        handleCancel={() => {
+          setFinishDialogVisible(false);
+        }}
+      />
       <View style={styles.container}>
         <View style={styles.row}>
           <View>
             <Image
-              style={{ width: 80, height: 80, borderRadius: 40, marginBottom: 10 }}
+              style={{
+                width: 80,
+                height: 80,
+                borderRadius: 40,
+                marginBottom: 10,
+              }}
               source={require('../../../../assets/fitness-man.jpg')}
             />
           </View>
           <View style={styles.textContainer}>
-            <View style={{ flex: 1, justifyContent: 'space-between', flexDirection: 'row',  display: 'flex' }}>
-              <View style={{ justifyContent: 'space-between', flex: 5 }}>
+            <View
+              style={{
+                flex: 1,
+                justifyContent: 'space-between',
+                flexDirection: 'row',
+                display: 'flex',
+              }}>
+              <View style={{justifyContent: 'space-between', flex: 5}}>
                 <Text style={styles.text}>{workout.name}</Text>
-                { isWorkoutInProgress && <Pressable style={{backgroundColor: '#888888', borderRadius: 30}} onPress={() => { setFinishDialogVisible(true)}}>
-                <Text style={{ flex: 1,  textAlign: 'center', color: 'white'}}> Finish</Text>
-                </Pressable> }
+                {isWorkoutInProgress && (
+                  <View style={{alignItems: 'center', height: '20%'}}>
+                    <Pressable
+                      style={{
+                        backgroundColor:
+                          workout.status === 'DONE' ? '#98FB98' : '#4682B4',
+                        width: '39%',
+                        borderRadius: 30,
+                        borderWidth: 1,
+                        borderColor:
+                          workout.status === 'DONE' ? '#98FB98' : '#4682B4',
+                      }}
+                      onPress={() => {
+                        setFinishDialogVisible(true);
+                      }}>
+                      <Text
+                        style={{flex: 1, textAlign: 'center', color: 'white'}}>
+                        Finish
+                      </Text>
+                    </Pressable>
+                  </View>
+                )}
               </View>
-              <View style={{ marginRight: 4}}>
-                <Pressable onPress={() => { setDialogDeleteVisible(true)}}>
-                <Icon name="trash" size={30} color={'black'} />
-                </Pressable> 
+              <View style={{marginRight: 4}}>
+                <Pressable
+                  onPress={() => {
+                    setDialogDeleteVisible(true);
+                  }}>
+                  <Icon name="trash" size={30} color={'black'} />
+                </Pressable>
               </View>
             </View>
           </View>
         </View>
         <View style={styles.infoColumn}>
           <View style={{flexDirection: 'row', marginBottom: '2%'}}>
-          <Icon name="clock-o" size={20} color={'black'} />
-          <Text style={styles.infoText}>{workout.length} minutes</Text>
+            <Icon name="clock-o" size={20} color={'black'} />
+            <Text style={styles.infoText}>{workout.length} minutes</Text>
           </View>
           <View style={{flexDirection: 'row'}}>
-            <Icon name={"circle"} size={20} color={isWorkoutInProgress ? 'green' : 'red'}></Icon>
-          <Text style={styles.statusText}>{workout.status}</Text>
+            <Icon
+              name={'circle'}
+              size={20}
+              color={isWorkoutInProgress ? '#4682B4' : '#98FB98'}
+            />
+            <Text style={styles.statusText}>{workout.status}</Text>
           </View>
         </View>
       </View>
@@ -94,7 +148,7 @@ const styles = StyleSheet.create({
   textContainer: {
     flex: 1,
     paddingLeft: '2%',
-    flexDirection: 'row',    
+    flexDirection: 'row',
   },
   text: {
     fontSize: 30,
@@ -124,7 +178,7 @@ const styles = StyleSheet.create({
   },
   statusText: {
     fontSize: 16,
-    paddingLeft: '2%'
+    paddingLeft: '2%',
   },
   imageContainer: {
     width: 80,

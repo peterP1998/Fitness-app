@@ -30,7 +30,9 @@ export default function Box(props: BoxPropTypes) {
       <ImageBackground source={imageSources.image1} style={styles.image}>
         <View style={styles.content}>
           {!props?.hide && (
-            <Pressable style={styles.iconcontainer} onPress={props.onPressButton}>
+            <Pressable
+              style={styles.iconcontainer}
+              onPress={props.onPressButton}>
               <Text style={styles.text}>{props.title}</Text>
             </Pressable>
           )}

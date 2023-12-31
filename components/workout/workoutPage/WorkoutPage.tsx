@@ -68,7 +68,7 @@ export const WorkoutPage = () => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'column',
-    backgroundColor: 'white'
+    backgroundColor: 'white',
   },
   workoutName: {
     fontSize: 30,

@@ -31,7 +31,11 @@ export const PreviousWorkoutLists: React.FC<
       <ScrollView
         contentContainerStyle={{flexGrow: 1, flexDirection: 'column'}}>
         {workouts.map(workout => (
-          <WorkoutCard key={workout.id} workout={workout} fetchWorkouts={fetchData} />
+          <WorkoutCard
+            key={workout.id}
+            workout={workout}
+            fetchWorkouts={fetchData}
+          />
         ))}
       </ScrollView>
     </SafeAreaView>

@@ -4,7 +4,7 @@ import {PreviousWorkoutLists} from './PreviousWorkoutsList';
 
 export const PreviousWorkoutsPage = () => {
   return (
-    <View style={{backgroundColor : 'white'}}>
+    <View style={{backgroundColor: 'white'}}>
       <PreviousWorkoutLists />
     </View>
   );

@@ -34,7 +34,7 @@ export default function WorkoutContinue() {
 
     fetchData();
   }, []);
-  console.log(workouts.length)
+  console.log(workouts.length);
   return workouts.length === 0 ? (
     <Box
       title={'No Workouts In Progress'}

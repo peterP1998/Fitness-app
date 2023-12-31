@@ -31,7 +31,9 @@ export const ExerciseCard: React.FC<ExerciseCardProps> = ({
   useEffect(() => {
     async function fetchData() {
       try {
-        const exercise = await fetchExerciseFullInformationForExerciseId(exerciseId);
+        const exercise = await fetchExerciseFullInformationForExerciseId(
+          exerciseId,
+        );
         setExercise(exercise);
       } catch (error) {
         console.error('Error fetching exercise:', error);
@@ -50,13 +52,20 @@ export const ExerciseCard: React.FC<ExerciseCardProps> = ({
             exerciseId: exerciseId,
           });
         }}
-        style={{ flex: 1 }}
-      >
-        <Text style={{ color: 'white', textAlign: 'center', marginTop: 40 }}>{exercise?.name}</Text>
+        style={{flex: 1}}>
+        <Text style={{color: 'white', textAlign: 'center', marginTop: 40}}>
+          {exercise?.name}
+        </Text>
       </Pressable>
-      <View style={{ flex: 1, overflow: 'hidden', borderTopEndRadius: 10, borderBottomEndRadius: 10 }}>
+      <View
+        style={{
+          flex: 1,
+          overflow: 'hidden',
+          borderTopEndRadius: 10,
+          borderBottomEndRadius: 10,
+        }}>
         <ImageBackground
-          style={{ flex: 1 }}
+          style={{flex: 1}}
           source={require('../../../assets/push-ups.jpeg')}
           resizeMode="cover"
         />
@@ -73,7 +82,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     flexDirection: 'row',
     alignContent: 'center',
-    backgroundColor: '#808080'
+    backgroundColor: '#808080',
   },
 });
-
