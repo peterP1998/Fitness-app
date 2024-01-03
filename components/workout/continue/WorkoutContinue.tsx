@@ -40,14 +40,14 @@ export default function WorkoutContinue() {
   return workouts.length === 0 ? (
     <Box
       title={'No Workouts In Progress'}
-      imageSource={'../../../assets/create-workout.jpg'}
+      imageSource={'continueWorkout'}
       onPressButton={() => {}}
       hide={false}
     />
   ) : (
     <Box
       title={'Continue Workout'}
-      imageSource={'../../../assets/create-workout.jpg'}
+      imageSource={'continueWorkout'}
       onPressButton={() => { (navigation as any).navigate('WorkoutPage',{
         workoutId: workouts[0].id,
       } )}}

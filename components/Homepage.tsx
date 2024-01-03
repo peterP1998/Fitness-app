@@ -11,6 +11,7 @@ import React, {useState} from 'react';
 import Header from './header/header';
 import WorkoutCreate from './workout/create/WorkoutCreate';
 import WorkoutContinue from './workout/continue/WorkoutContinue';
+import DataBox from './data/DataBox';
 
 export default function HomePage() {
   return (
@@ -18,6 +19,7 @@ export default function HomePage() {
       <Header />
       <WorkoutCreate />
       <WorkoutContinue />
+      <DataBox />
     </SafeAreaView>
   );
 }

@@ -8,6 +8,7 @@ import {useNavigation, useRoute} from '@react-navigation/native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { PageTitle } from '../../common/pageTitle/PageTitle';
 
 type MuscleGroupsCategoryListProps = {
   workoutId: number;
@@ -45,26 +46,13 @@ export const MuscleGroupsCategoryList = () => {
   }, []);
   return (
     <SafeAreaView>
-      <View
-        style={{
-          flexDirection: 'row',
-          alignContent: 'center',
-          paddingBottom: '3%',
-        }}>
-        <Pressable style={{flex: 1}} onPress={() => navigation.goBack()}>
-          <Icon name="arrow-back" size={40} />
-        </Pressable>
-        <Text style={{alignSelf: 'flex-start', fontSize: 30, flex: 6}}>
-          {' '}
-          Muscle Groups{' '}
-        </Text>
-      </View>
+      <PageTitle title='Muscle groups' />
       <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>
         {muscleGroups.map(muscle => {
           return (
             <View
             key={muscle.name}
-              style={{flexBasis: '40%', alignSelf: 'center', paddingLeft: 50}}>
+              style={{flexBasis: '50%', alignSelf: 'center'}}>
               <MuscleGroupsCategoryCard
                 muscleName={muscle.name}
                 muscleId={muscle.id}

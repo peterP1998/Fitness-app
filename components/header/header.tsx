@@ -40,6 +40,7 @@ export default function Header() {
           animationType="slide"
           transparent={true}
           visible={modalVisible}
+          style={styles.modal}
           onRequestClose={closeModal}
           onDismiss={closeModal}>
           <TouchableWithoutFeedback
@@ -92,6 +93,11 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     flex: 3,
     fontSize: 25,
+  },
+  modal: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   centeredView: {
     flex: 3,

@@ -14,20 +14,25 @@ import {Image} from 'react-native';
 
 type BoxPropTypes = {
   onPressButton: () => void;
-  imageSource: String;
-  title: String;
+  imageSource: string;
+  title: string;
   hide?: boolean;
 };
+type BoxImages = {
+  [key in string]: any;
+};
 
-const imageSources = {
-  image1: require('../../../assets/fitness-man.jpg'),
-  image2: require('../../../assets/create-workout.jpg'),
+
+const imageSources: BoxImages = {
+  'data': require('../../../assets/data.jpeg'),
+  'workout': require('../../../assets/fitness-man.jpg'),
+  'continueWorkout': require('../../../assets/running-man.jpeg')
   // Add more image sources as needed
 };
 export default function Box(props: BoxPropTypes) {
   return (
     <SafeAreaView style={styles.container}>
-      <ImageBackground source={imageSources.image1} style={styles.image}>
+      <ImageBackground source={imageSources[props.imageSource]} style={styles.image}>
         <View style={styles.content}>
           {!props?.hide && (
             <Pressable

@@ -44,7 +44,7 @@ const WorkoutCreate: React.FC<WorkoutCreateProps> = ({}) => {
     <>
       <Box
         title={'New Workout'}
-        imageSource={'../../../assets/create-workout.jpg'}
+        imageSource={'workout'}
         onPressButton={showDialog}
       />
       <Modal

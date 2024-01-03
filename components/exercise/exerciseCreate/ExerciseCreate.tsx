@@ -3,8 +3,12 @@ import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {useEffect, useState} from 'react';
 import {fetchExerciseConfigsForMuscleGroup} from '../../../service/ExerciseConfigService';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {Pressable, StyleSheet, Text, View} from 'react-native';
+import {Platform, Pressable, StyleSheet, Text, View} from 'react-native';
 import {addExerciseForWorkout} from '../../../service/ExerciseService';
+import { SearchBar } from '@rneui/themed';
+import { PageTitle } from '../../common/pageTitle/PageTitle';
+import { Icon, Button } from '@rneui/themed';
+
 
 type ExerciseCreateProps = {
   workoutId: number;
@@ -27,6 +31,7 @@ export const ExerciseCreate = () => {
   const {workoutId, muscleId}: RouteParams = route.params as RouteParams;
 
   const [exerciseConfigs, setExerciseConfigs] = useState<ExerciseConfig[]>([]);
+  const [searchedConfigs, setSearchedConfigs] = useState<ExerciseConfig[]>([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -35,6 +40,7 @@ export const ExerciseCreate = () => {
           muscleId,
         );
         setExerciseConfigs(exerciseConfigs);
+        setSearchedConfigs(exerciseConfigs);
       } catch (error) {
         console.error('Error fetching exercise configs:', error);
       }
@@ -43,10 +49,27 @@ export const ExerciseCreate = () => {
     fetchData();
   }, []);
 
+  const [search, setSearch] = useState("");
+
+const updateSearch = (search: string) => {
+  setSearch(search);
+  if(search.trim().length === 0) {
+    setSearchedConfigs(exerciseConfigs);
+  } else {
+    setSearchedConfigs(exerciseConfigs.filter(x => x.name.includes(search)))
+  }
+};
+
   return (
     <SafeAreaView>
-      <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>
-        {exerciseConfigs.map(exercise => {
+        <PageTitle title={'Exercises for muscle groups'}/>
+        <View style={{width: '90%', alignSelf: 'center'}}>
+        <SearchBar placeholder="Search for exercise..."
+      onChangeText={updateSearch}
+      value={search} platform={'ios'} searchIcon={Platform.OS === 'ios' ? {name: 'search'} : undefined} clearIcon={Platform.OS === 'ios' ? {name: 'close-circle'} : undefined}/> 
+      </View>
+      <View style={{flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center'}}>
+        {searchedConfigs.map(exercise => {
           return (
             <View key={exercise.id}>
               <Pressable
