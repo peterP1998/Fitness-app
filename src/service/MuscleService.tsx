@@ -1,4 +1,4 @@
-import {db} from '../App';
+import {db} from '../../App';
 import {MuscleGroup} from '../model/MuscleGroup';
 
 export async function fetchMuscleGroups(): Promise<MuscleGroup[]> {

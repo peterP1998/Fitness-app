@@ -1,4 +1,4 @@
-import {db} from '../App';
+import {db} from '../../App';
 import {Workout} from '../model/Workout';
 
 export function addWorkout(name: string): Promise<Number> {
@@ -99,7 +99,7 @@ export async function finishWorkout(workoutId: number): Promise<Number> {
   return new Promise((resolve, reject) => {
     db.transaction(tx => {
       tx.executeSql(
-        'UPDATE workout SET status = "DONE", length = CAST((julianday("now") - julianday(startDate)) AS INTEGER) WHERE id = ?',
+        'UPDATE workout SET status = "DONE", length = CAST(((julianday("now") - julianday(startDate)) * 1440) AS INTEGER) WHERE id = ?;',
         [workoutId],
         (tx, result) => {
           const idOfWorkout = result.insertId;

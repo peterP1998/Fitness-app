@@ -3,11 +3,12 @@ import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {useEffect, useState} from 'react';
 import {fetchExerciseConfigsForMuscleGroup} from '../../../service/ExerciseConfigService';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {Platform, Pressable, StyleSheet, Text, View} from 'react-native';
+import {Image, Platform, Pressable, StyleSheet, Text, View} from 'react-native';
 import {addExerciseForWorkout} from '../../../service/ExerciseService';
 import { SearchBar } from '@rneui/themed';
 import { PageTitle } from '../../common/pageTitle/PageTitle';
 import { Icon, Button } from '@rneui/themed';
+import { exerciseImages } from '../../../config/ExerciseImagesConfig';
 
 
 type ExerciseCreateProps = {
@@ -60,6 +61,8 @@ const updateSearch = (search: string) => {
   }
 };
 
+console.log(exerciseConfigs)
+
   return (
     <SafeAreaView>
         <PageTitle title={'Exercises for muscle groups'}/>
@@ -72,6 +75,7 @@ const updateSearch = (search: string) => {
         {searchedConfigs.map(exercise => {
           return (
             <View key={exercise.id}>
+            
               <Pressable
                 onPress={() => {
                   addExerciseForWorkout(workoutId, exercise.id);
@@ -80,6 +84,12 @@ const updateSearch = (search: string) => {
                   });
                 }}>
                 <View style={styles.container}>
+                <Image
+                style={{ width: 100, height: 60, alignSelf: 'center', borderWidth: 1,
+                borderRadius: 10, }}
+                source={exerciseImages[exercise?.name ?? 'Bicep Curls']}
+                resizeMode="cover"
+              />
                   <Text style={styles.text}> {exercise.name} </Text>
                 </View>
               </Pressable>
@@ -94,14 +104,16 @@ const updateSearch = (search: string) => {
 const styles = StyleSheet.create({
   container: {
     alignSelf: 'center',
-    padding: '3%',
     margin: '10%',
     borderWidth: 1,
     borderRadius: 10,
     width: 100,
     height: 100,
+    overflow: 'hidden',
+    position: 'relative',
+    alignItems: 'center',
   },
   text: {
-    alignSelf: 'center',
+    textAlign: 'center',
   },
 });

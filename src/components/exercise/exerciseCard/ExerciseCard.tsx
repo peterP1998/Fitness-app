@@ -20,7 +20,6 @@ type ExerciseCardProps = {
   exerciseId: number;
   exerciseConfigId: number;
 };
-
 export const ExerciseCard: React.FC<ExerciseCardProps> = ({
   exerciseId,
   exerciseConfigId,
@@ -32,7 +31,7 @@ export const ExerciseCard: React.FC<ExerciseCardProps> = ({
     async function fetchData() {
       try {
         const exercise = await fetchExerciseFullInformationForExerciseId(
-          exerciseId,
+          exerciseConfigId,
         );
         setExercise(exercise);
       } catch (error) {
@@ -85,6 +84,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     flexDirection: 'row',
     alignContent: 'center',
-    backgroundColor: '#808080',
+    backgroundColor: '#008080',
   },
 });

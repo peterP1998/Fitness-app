@@ -8,13 +8,15 @@ import {
   Pressable,
   TextInput,
   TouchableWithoutFeedback,
+  Alert,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Image} from 'react-native';
 import Box from '../../common/box/box';
-import {addWorkout, fetchWorkouts} from '../../../service/WorkoutService';
-import {useNavigation} from '@react-navigation/native';
+import {addWorkout, fetchWorkouts, getAllWorkoutsInProgress} from '../../../service/WorkoutService';
+import {useIsFocused, useNavigation} from '@react-navigation/native';
+import { Workout } from '../../../model/Workout';
 
 type WorkoutCreateProps = {};
 
@@ -22,9 +24,31 @@ const WorkoutCreate: React.FC<WorkoutCreateProps> = ({}) => {
   const [dialogVisible, setDialogVisible] = useState(false);
   const [nameOfWorkout, setNameOfWorkout] = useState('');
 
-  const showDialog = () => setDialogVisible(true);
+  const [workoutsInProgress, setWorkoutsInProgress] = useState<Workout[]>([]);
+  const showDialog = () => {
+    if( workoutsInProgress.length === 1) {
+      Alert.alert('Workout in progress', 'Please finish it before starting a new workout', [
+        {text: 'OK', onPress: () => console.log('OK Pressed')},
+      ]);
+
+    } else {  setDialogVisible(true);}
+  }
 
   const navigation = useNavigation();
+
+  const isFocused = useIsFocused()
+    useEffect(() => {
+    async function fetchData() {
+      try {
+        const fetchedWorkouts = await getAllWorkoutsInProgress();
+        setWorkoutsInProgress(fetchedWorkouts);
+      } catch (error) {
+        console.error('Error fetching workouts:', error);
+      }
+    }
+
+    fetchData();
+  }, [isFocused]);
 
   const handleCancel = () => {
     setDialogVisible(false);
@@ -32,12 +56,15 @@ const WorkoutCreate: React.FC<WorkoutCreateProps> = ({}) => {
   };
 
   const createWorkout = async () => {
+  
     const idOfCreatedWorkout = await addWorkout(nameOfWorkout);
     setNameOfWorkout('');
     setDialogVisible(false);
     (navigation as any).navigate('WorkoutPage', {
       workoutId: idOfCreatedWorkout,
     });
+  setNameOfWorkout('');
+    setDialogVisible(false);
   };
 
   return (

@@ -6,10 +6,10 @@ import {fetchExercises} from '../../../service/ExerciseService';
 import {Workout} from '../../../model/Workout';
 import {PageTitle} from '../../common/pageTitle/PageTitle';
 
-type PreviousWorkoutListsProps = {};
+type PreviousWorkoutPageProps = {};
 
-export const PreviousWorkoutLists: React.FC<
-  PreviousWorkoutListsProps
+export const PreviousWorkoutsPage: React.FC<
+PreviousWorkoutPageProps
 > = ({}) => {
   const [workouts, setWorkouts] = useState<Workout[]>([]);
   useEffect(() => {

@@ -1,4 +1,4 @@
-import {db} from '../App';
+import {db} from '../../App';
 
 export async function fetchExercises(): Promise<Exercise[]> {
   const exercises: Exercise[] = [];

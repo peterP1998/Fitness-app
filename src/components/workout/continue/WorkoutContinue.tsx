@@ -17,10 +17,8 @@ import {
 } from '../../../service/WorkoutService';
 import {Workout} from '../../../model/Workout';
 import { useIsFocused, useNavigation } from '@react-navigation/native';
-//const {useRealm, useQuery} = realmContext;
+
 export default function WorkoutContinue() {
-  //const workouts = useQuery(Workout)
-  //console.log(workouts)
   const navigation = useNavigation()
   const [workouts, setWorkouts] = useState<Workout[]>([]);
   const isFocused = useIsFocused()
@@ -36,7 +34,7 @@ export default function WorkoutContinue() {
 
     fetchData();
   }, [isFocused]);
-  console.log(workouts.length);
+
   return workouts.length === 0 ? (
     <Box
       title={'No Workouts In Progress'}

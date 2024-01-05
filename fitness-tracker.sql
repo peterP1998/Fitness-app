@@ -1,4 +1,6 @@
 BEGIN TRANSACTION;
+PRAGMA foreign_keys = ON;
+
 CREATE TABLE IF NOT EXISTS "workout" (
 	"id"	INTEGER,
 	"name"	TEXT,
@@ -12,7 +14,7 @@ CREATE TABLE IF NOT EXISTS "exercise" (
 	"workout_id"	INTEGER,
 	"exercise_config_id"	INTEGER,
 	PRIMARY KEY("id"),
-	FOREIGN KEY("exercise_config_id") REFERENCES "exercise_config"("id") ON DELETE CASCADE,
+	FOREIGN KEY("exercise_config_id") REFERENCES "exercise_config"("id"),
 	FOREIGN KEY("workout_id") REFERENCES "workout"("id") ON DELETE CASCADE
 );
 CREATE TABLE IF NOT EXISTS "exercise_config" (

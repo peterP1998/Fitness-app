@@ -68,6 +68,7 @@ export const ExerciseList: React.FC<ExerciseListProps> = ({
 const styles = StyleSheet.create({
   scrollView: {
     flexGrow: 1,
+    paddingBottom: 100,
     color: 'white'
   },
   container: {

@@ -81,22 +81,21 @@ export const WorkoutCard: React.FC<WorkoutCardProps> = ({
               <View style={{justifyContent: 'space-between', flex: 5}}>
                 <Text style={styles.text}>{workout.name}</Text>
                 {isWorkoutInProgress && (
-                  <View style={{alignItems: 'center', height: '20%'}}>
+                  <View style={{alignItems: 'center', height: '20%', flex: 1}}>
                     <Pressable
                       style={{
-                        backgroundColor:
-                          workout.status === 'DONE' ? '#98FB98' : '#4682B4',
-                        width: '39%',
-                        borderRadius: 30,
+                        backgroundColor: '#a0d2eb',
+                        width: '40%',
+                        height: '80%',
+                        borderRadius: 5,
                         borderWidth: 1,
-                        borderColor:
-                          workout.status === 'DONE' ? '#98FB98' : '#4682B4',
+                        borderColor: '#a0d2eb',
                       }}
                       onPress={() => {
                         setFinishDialogVisible(true);
                       }}>
                       <Text
-                        style={{flex: 1, textAlign: 'center', color: 'white'}}>
+                        style={{flex: 1, textAlign: 'center', color: 'white', fontSize: 17, paddingTop: 2}}>
                         Finish
                       </Text>
                     </Pressable>
@@ -123,7 +122,7 @@ export const WorkoutCard: React.FC<WorkoutCardProps> = ({
             <Icon
               name={'circle'}
               size={20}
-              color={isWorkoutInProgress ? '#4682B4' : '#98FB98'}
+              color={isWorkoutInProgress ? '#a0d2eb' : '#98FB98'}
             />
             <Text style={styles.statusText}>{workout.status}</Text>
           </View>
