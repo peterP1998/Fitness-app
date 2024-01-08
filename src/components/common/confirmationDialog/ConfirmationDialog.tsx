@@ -20,7 +20,7 @@ export const ConfirmationDialog: React.FC<ConfirmationDialogProps> = ({
   functionToBeFired,
   visible,
   handleCancel,
-  idOfEntity
+  idOfEntity,
 }) => {
   return (
     <Modal
@@ -40,7 +40,9 @@ export const ConfirmationDialog: React.FC<ConfirmationDialogProps> = ({
             <Text style={styles.textCreateWorkout}> {confirmationText} </Text>
             <View
               style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-              <Pressable style={styles.button} onPress={() => functionToBeFired(idOfEntity)}>
+              <Pressable
+                style={styles.button}
+                onPress={() => functionToBeFired(idOfEntity)}>
                 <Text style={styles.buttonText}> Yes </Text>
               </Pressable>
               <Pressable style={styles.button} onPress={handleCancel}>

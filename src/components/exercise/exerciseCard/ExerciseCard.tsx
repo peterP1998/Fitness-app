@@ -14,7 +14,7 @@ import {fetchExerciseFullInformationForExerciseId} from '../../../service/Exerci
 import {useNavigation} from '@react-navigation/native';
 import {AddSetToExercise} from '../../sets/SetsCreation/CreateExerciseSet';
 import {addSetToExercise} from '../../../service/ExerciseSetService';
-import { exerciseImages } from '../../../config/ExerciseImagesConfig';
+import {exerciseImages} from '../../../../config/ExerciseImagesConfig';
 
 type ExerciseCardProps = {
   exerciseId: number;
@@ -51,7 +51,7 @@ export const ExerciseCard: React.FC<ExerciseCardProps> = ({
           (navigation as any).navigate('ExerciseDetails', {
             exerciseConfigId: exerciseConfigId,
             exerciseId: exerciseId,
-            exerciseName: exercise?.name
+            exerciseName: exercise?.name,
           });
         }}
         style={{flex: 1}}>

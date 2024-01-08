@@ -19,7 +19,7 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import {useRoute} from '@react-navigation/native';
 import {PageTitle} from '../../common/pageTitle/PageTitle';
 import IoniIcon from 'react-native-vector-icons/Ionicons';
-import { ConfirmationDialog } from '../../common/confirmationDialog/ConfirmationDialog';
+import {ConfirmationDialog} from '../../common/confirmationDialog/ConfirmationDialog';
 
 type RootStackParamList = {
   ExerciseDetails: {exerciseId: number; exerciseConfigId: number};
@@ -53,9 +53,7 @@ export const ExerciseDetails = () => {
     }
   }
 
-
   useEffect(() => {
-
     fetchData();
   }, [exerciseId]);
 
@@ -77,7 +75,7 @@ export const ExerciseDetails = () => {
   const deleteSet = (id: number) => {
     deleteSetForExercise(id);
     fetchData();
-  }
+  };
   return (
     <SafeAreaView>
       <Modal
@@ -116,10 +114,7 @@ export const ExerciseDetails = () => {
           </View>
         </TouchableWithoutFeedback>
       </Modal>
-      <PageTitle
-        title={exerciseName}
-        isDeletable={false}
-      />
+      <PageTitle title={exerciseName} isDeletable={false} />
       <View style={styles.table}>
         <View style={styles.tableRow}>
           <Text style={styles.headerCell}>Reps</Text>
@@ -127,37 +122,40 @@ export const ExerciseDetails = () => {
           <Text style={styles.headerCell} />
         </View>
         {reps.map(repetition => (
-            <View key={repetition.id}>
+          <View key={repetition.id}>
             <ConfirmationDialog
-            functionToBeFired={deleteSet}
-            confirmationText={'Do you want to delete this exercise set'}
-            visible={deleteDialogVisible}
-            handleCancel={() => {
+              functionToBeFired={deleteSet}
+              confirmationText={'Do you want to delete this exercise set'}
+              visible={deleteDialogVisible}
+              handleCancel={() => {
                 setDeleteDialogVisible(false);
-            }}
-            idOfEntity={repetition.id}
-          />
-          <View style={styles.tableRow}>
-            <Text style={styles.tableCell}>{repetition.reps}</Text>
-            <Text style={styles.tableCell}>{repetition.weight}</Text>
-            <View style={styles.tableCellForDeletion}>
-            <Pressable onPress={() => setDeleteDialogVisible(true)}>
-            <Icon
-              name="trash"
-              size={20}
-              color={'black'}
-              style={{alignSelf: 'center'}}
+              }}
+              idOfEntity={repetition.id}
             />
-            </Pressable>
+            <View style={styles.tableRow}>
+              <Text style={styles.tableCell}>{repetition.reps}</Text>
+              <Text style={styles.tableCell}>{repetition.weight}</Text>
+              <View style={styles.tableCellForDeletion}>
+                <Pressable onPress={() => setDeleteDialogVisible(true)}>
+                  <Icon
+                    name="trash"
+                    size={20}
+                    color={'black'}
+                    style={{alignSelf: 'center'}}
+                  />
+                </Pressable>
+              </View>
             </View>
           </View>
-          </View>
         ))}
-         <View style={styles.tableRowForAdding}>
-            <Pressable onPress={ () => {setDialogVisible(true)}}>
+        <View style={styles.tableRowForAdding}>
+          <Pressable
+            onPress={() => {
+              setDialogVisible(true);
+            }}>
             <IoniIcon name="add" size={20} color={'black'} />
-            </Pressable>
-         </View>
+          </Pressable>
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -195,7 +193,7 @@ const styles = StyleSheet.create({
   tableCellForDeletion: {
     flex: 1,
     textAlign: 'center',
-    justifyContent: 'flex-end'
+    justifyContent: 'flex-end',
   },
   modal: {
     flex: 1,

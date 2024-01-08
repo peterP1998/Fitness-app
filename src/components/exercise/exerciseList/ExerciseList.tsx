@@ -7,7 +7,7 @@ import {
 import {ExerciseCreateCard} from '../exerciseCreateCard/ExerciseCreateCard';
 import {WorkoutStatus} from '../../../model/Workout';
 import {ExerciseCard} from '../exerciseCard/ExerciseCard';
-import { useIsFocused } from '@react-navigation/native';
+import {useIsFocused} from '@react-navigation/native';
 type ExerciseListProps = {
   workoutId: number;
   workoutStatus: WorkoutStatus | undefined;
@@ -18,7 +18,7 @@ export const ExerciseList: React.FC<ExerciseListProps> = ({
   workoutStatus,
 }) => {
   const [exercises, setExercises] = useState<Exercise[]>([]);
-  const isFocused = useIsFocused()
+  const isFocused = useIsFocused();
 
   useEffect(() => {
     async function fetchData() {
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
   scrollView: {
     flexGrow: 1,
     paddingBottom: 100,
-    color: 'white'
+    color: 'white',
   },
   container: {
     flexDirection: 'column',

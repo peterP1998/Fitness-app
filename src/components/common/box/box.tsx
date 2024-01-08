@@ -22,17 +22,18 @@ type BoxImages = {
   [key in string]: any;
 };
 
-
 const imageSources: BoxImages = {
-  'data': require('../../../assets/data.jpeg'),
-  'workout': require('../../../assets/fitness-man.jpg'),
-  'continueWorkout': require('../../../assets/running-man.jpeg')
+  data: require('../../../../assets/data.jpeg'),
+  workout: require('../../../../assets/fitness-man.jpg'),
+  continueWorkout: require('../../../../assets/running-man.jpeg'),
   // Add more image sources as needed
 };
 export default function Box(props: BoxPropTypes) {
   return (
     <SafeAreaView style={styles.container}>
-      <ImageBackground source={imageSources[props.imageSource]} style={styles.image}>
+      <ImageBackground
+        source={imageSources[props.imageSource]}
+        style={styles.image}>
         <View style={styles.content}>
           {!props?.hide && (
             <Pressable

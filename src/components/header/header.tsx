@@ -57,13 +57,13 @@ export default function Header() {
                 </Pressable>
               </View>
               <View
-        style={{
-          borderColor: 'black',
-          borderWidth: 1,
-          width: '90%',
-          alignSelf: 'center',
-        }}
-      />
+                style={{
+                  borderColor: 'black',
+                  borderWidth: 1,
+                  width: '90%',
+                  alignSelf: 'center',
+                }}
+              />
             </SafeAreaView>
           </TouchableWithoutFeedback>
         </Modal>

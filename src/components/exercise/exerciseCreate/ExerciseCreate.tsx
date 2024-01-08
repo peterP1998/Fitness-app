@@ -5,11 +5,10 @@ import {fetchExerciseConfigsForMuscleGroup} from '../../../service/ExerciseConfi
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {Image, Platform, Pressable, StyleSheet, Text, View} from 'react-native';
 import {addExerciseForWorkout} from '../../../service/ExerciseService';
-import { SearchBar } from '@rneui/themed';
-import { PageTitle } from '../../common/pageTitle/PageTitle';
-import { Icon, Button } from '@rneui/themed';
-import { exerciseImages } from '../../../config/ExerciseImagesConfig';
-
+import {SearchBar} from '@rneui/themed';
+import {PageTitle} from '../../common/pageTitle/PageTitle';
+import {Icon, Button} from '@rneui/themed';
+import {exerciseImages} from '../../../../config/ExerciseImagesConfig';
 
 type ExerciseCreateProps = {
   workoutId: number;
@@ -50,32 +49,41 @@ export const ExerciseCreate = () => {
     fetchData();
   }, []);
 
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState('');
 
-const updateSearch = (search: string) => {
-  setSearch(search);
-  if(search.trim().length === 0) {
-    setSearchedConfigs(exerciseConfigs);
-  } else {
-    setSearchedConfigs(exerciseConfigs.filter(x => x.name.includes(search)))
-  }
-};
+  const updateSearch = (search: string) => {
+    setSearch(search);
+    if (search.trim().length === 0) {
+      setSearchedConfigs(exerciseConfigs);
+    } else {
+      setSearchedConfigs(exerciseConfigs.filter(x => x.name.includes(search)));
+    }
+  };
 
-console.log(exerciseConfigs)
+  console.log(exerciseConfigs);
 
   return (
     <SafeAreaView>
-        <PageTitle title={'Exercises for muscle groups'}/>
-        <View style={{width: '90%', alignSelf: 'center'}}>
-        <SearchBar placeholder="Search for exercise..."
-      onChangeText={updateSearch}
-      value={search} platform={'ios'} searchIcon={Platform.OS === 'ios' ? {name: 'search'} : undefined} clearIcon={Platform.OS === 'ios' ? {name: 'close-circle'} : undefined}/> 
+      <PageTitle title={'Exercises for muscle groups'} />
+      <View style={{width: '90%', alignSelf: 'center'}}>
+        <SearchBar
+          placeholder="Search for exercise..."
+          onChangeText={updateSearch}
+          value={search}
+          platform={'ios'}
+          searchIcon={Platform.OS === 'ios' ? {name: 'search'} : undefined}
+          clearIcon={Platform.OS === 'ios' ? {name: 'close-circle'} : undefined}
+        />
       </View>
-      <View style={{flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center'}}>
+      <View
+        style={{
+          flexDirection: 'row',
+          flexWrap: 'wrap',
+          justifyContent: 'center',
+        }}>
         {searchedConfigs.map(exercise => {
           return (
             <View key={exercise.id}>
-            
               <Pressable
                 onPress={() => {
                   addExerciseForWorkout(workoutId, exercise.id);
@@ -84,12 +92,17 @@ console.log(exerciseConfigs)
                   });
                 }}>
                 <View style={styles.container}>
-                <Image
-                style={{ width: 100, height: 60, alignSelf: 'center', borderWidth: 1,
-                borderRadius: 10, }}
-                source={exerciseImages[exercise?.name ?? 'Bicep Curls']}
-                resizeMode="cover"
-              />
+                  <Image
+                    style={{
+                      width: 100,
+                      height: 60,
+                      alignSelf: 'center',
+                      borderWidth: 1,
+                      borderRadius: 10,
+                    }}
+                    source={exerciseImages[exercise?.name ?? 'Bicep Curls']}
+                    resizeMode="cover"
+                  />
                   <Text style={styles.text}> {exercise.name} </Text>
                 </View>
               </Pressable>

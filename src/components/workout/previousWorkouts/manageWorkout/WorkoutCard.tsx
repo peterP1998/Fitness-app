@@ -67,7 +67,7 @@ export const WorkoutCard: React.FC<WorkoutCardProps> = ({
                 borderRadius: 40,
                 marginBottom: 10,
               }}
-              source={require('../../../../assets/fitness-man.jpg')}
+              source={require('../../../../../assets/fitness-man.jpg')}
             />
           </View>
           <View style={styles.textContainer}>
@@ -95,7 +95,13 @@ export const WorkoutCard: React.FC<WorkoutCardProps> = ({
                         setFinishDialogVisible(true);
                       }}>
                       <Text
-                        style={{flex: 1, textAlign: 'center', color: 'white', fontSize: 17, paddingTop: 2}}>
+                        style={{
+                          flex: 1,
+                          textAlign: 'center',
+                          color: 'white',
+                          fontSize: 17,
+                          paddingTop: 2,
+                        }}>
                         Finish
                       </Text>
                     </Pressable>

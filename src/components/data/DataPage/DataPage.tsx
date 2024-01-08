@@ -11,18 +11,14 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import React, {useEffect, useState} from 'react';
 import {Image} from 'react-native';
 import {useIsFocused, useNavigation} from '@react-navigation/native';
-import Box from '../common/box/box';
+import DataWorkout from '../DataWorkout/DataWorkout';
+import {PageTitle} from '../../common/pageTitle/PageTitle';
 //const {useRealm, useQuery} = realmContext;
-export default function DataBox() {
-  const navigation = useNavigation();
+export default function DataPage() {
   return (
-    <Box
-      title={'Workouts summaries. Comming soon'}
-      imageSource={'data'}
-      onPressButton={() => {
-        (navigation as any).navigate('DataPage', {});
-      }}
-      hide={false}
-    />
+    <SafeAreaView>
+      <PageTitle title={'Workout data'} /> 
+      <DataWorkout />
+    </SafeAreaView>
   );
 }

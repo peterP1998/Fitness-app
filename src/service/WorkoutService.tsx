@@ -130,3 +130,24 @@ export async function deleteWorkout(workoutId: number): Promise<Number> {
     });
   });
 }
+
+// '-1 year', '-1 month', '-6 months'
+export async function getWorkoutsTimePeriod(period: string): Promise<number> {
+  return new Promise((resolve, reject) => {
+    db.transaction(tx => {
+      tx.executeSql(
+        `SELECT COUNT(*) AS workouts_last_week
+        FROM workout
+        WHERE startdate >= date('now', ?);`, // change -7 days with period
+        [period],
+        (tx, results) => {
+          const count = results.rows.item(0).workouts_last_week;
+          resolve(count);
+        },
+        (tx, error) => {
+          reject(error);
+        },
+      );
+    });
+  });
+}

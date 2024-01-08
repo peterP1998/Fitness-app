@@ -16,13 +16,13 @@ import {
   getAllWorkoutsInProgress,
 } from '../../../service/WorkoutService';
 import {Workout} from '../../../model/Workout';
-import { useIsFocused, useNavigation } from '@react-navigation/native';
+import {useIsFocused, useNavigation} from '@react-navigation/native';
 
 export default function WorkoutContinue() {
-  const navigation = useNavigation()
+  const navigation = useNavigation();
   const [workouts, setWorkouts] = useState<Workout[]>([]);
-  const isFocused = useIsFocused()
-    useEffect(() => {
+  const isFocused = useIsFocused();
+  useEffect(() => {
     async function fetchData() {
       try {
         const fetchedWorkouts = await getAllWorkoutsInProgress();
@@ -46,9 +46,11 @@ export default function WorkoutContinue() {
     <Box
       title={'Continue Workout'}
       imageSource={'continueWorkout'}
-      onPressButton={() => { (navigation as any).navigate('WorkoutPage',{
-        workoutId: workouts[0].id,
-      } )}}
+      onPressButton={() => {
+        (navigation as any).navigate('WorkoutPage', {
+          workoutId: workouts[0].id,
+        });
+      }}
       hide={false}
     />
   );

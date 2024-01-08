@@ -50,22 +50,20 @@ export function getSetsForExercise(
   });
 }
 
-export function deleteSetForExercise(
-    exercise_set_id: number,
-  ): Promise<Number> {
-    return new Promise((resolve, reject) => {
-      db.transaction(tx => {
-        tx.executeSql(
-          'DELETE FROM exercise_set WHERE id = ?',
-          [exercise_set_id],
-          function (tx, result) {
-            const idOfSetForExercise = result.insertId;
-            resolve(idOfSetForExercise);
-          },
-          error => {
-            reject(error);
-          },
-        );
-      });
+export function deleteSetForExercise(exercise_set_id: number): Promise<Number> {
+  return new Promise((resolve, reject) => {
+    db.transaction(tx => {
+      tx.executeSql(
+        'DELETE FROM exercise_set WHERE id = ?',
+        [exercise_set_id],
+        function (tx, result) {
+          const idOfSetForExercise = result.insertId;
+          resolve(idOfSetForExercise);
+        },
+        error => {
+          reject(error);
+        },
+      );
     });
-  }
+  });
+}

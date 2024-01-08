@@ -9,6 +9,7 @@ import HomePage from './src/components/Homepage';
 import {MuscleGroupsCategoryList} from './src/components/muscle/muscleCategoryList/MuscleGroupsCategoryList';
 import {ExerciseCreate} from './src/components/exercise/exerciseCreate/ExerciseCreate';
 import {ExerciseDetails} from './src/components/exercise/exerciseDetails/ExerciseDetails';
+import Navigation from './src/navigation/Navigation';
 
 const Stack = createNativeStackNavigator();
 export const db = connectToDatabase();
@@ -16,28 +17,7 @@ export const db = connectToDatabase();
 db.executeSql('PRAGMA foreign_keys = ON');
 
 export default function App() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{
-          headerShown: false,
-          contentStyle: { backgroundColor: 'white' }
-        }}>
-        <Stack.Screen name="HomePage" component={HomePage} />
-        <Stack.Screen
-          name="PreviousWorkoutsPage"
-          component={PreviousWorkoutsPage}
-        />
-        <Stack.Screen name="WorkoutPage" component={WorkoutPage} />
-        <Stack.Screen
-          name="MuscleGroupsCategoryList"
-          component={MuscleGroupsCategoryList}
-        />
-        <Stack.Screen name="ExerciseCreate" component={ExerciseCreate} />
-        <Stack.Screen name="ExerciseDetails" component={ExerciseDetails} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
+  return <Navigation />;
 }
 const styles = StyleSheet.create({
   container: {

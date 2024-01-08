@@ -50,3 +50,23 @@ export async function fetchExerciseFullInformationForExerciseId(
     });
   });
 }
+
+export async function countExerciseForMuscleGroup(
+  muscle: string,
+): Promise<number> {
+  return new Promise((resolve, reject) => {
+    db.transaction(tx => {
+      tx.executeSql(
+        'SELECT count(*) AS number_exercise_for_muscle FROM exercise_config ex JOIN muscle_exercise_mapping mem ON mem.exercise_config_id = ex.id where muscle_group_id = ?',
+        [muscle],
+        (tx, results) => {
+          const count = results.rows.item(0).number_exercise_for_muscle;
+          resolve(count);
+        },
+        error => {
+          reject(error);
+        },
+      );
+    });
+  });
+}

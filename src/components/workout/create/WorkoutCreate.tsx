@@ -14,9 +14,13 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import React, {useEffect, useState} from 'react';
 import {Image} from 'react-native';
 import Box from '../../common/box/box';
-import {addWorkout, fetchWorkouts, getAllWorkoutsInProgress} from '../../../service/WorkoutService';
+import {
+  addWorkout,
+  fetchWorkouts,
+  getAllWorkoutsInProgress,
+} from '../../../service/WorkoutService';
 import {useIsFocused, useNavigation} from '@react-navigation/native';
-import { Workout } from '../../../model/Workout';
+import {Workout} from '../../../model/Workout';
 
 type WorkoutCreateProps = {};
 
@@ -26,18 +30,21 @@ const WorkoutCreate: React.FC<WorkoutCreateProps> = ({}) => {
 
   const [workoutsInProgress, setWorkoutsInProgress] = useState<Workout[]>([]);
   const showDialog = () => {
-    if( workoutsInProgress.length === 1) {
-      Alert.alert('Workout in progress', 'Please finish it before starting a new workout', [
-        {text: 'OK', onPress: () => console.log('OK Pressed')},
-      ]);
-
-    } else {  setDialogVisible(true);}
-  }
+    if (workoutsInProgress.length === 1) {
+      Alert.alert(
+        'Workout in progress',
+        'Please finish it before starting a new workout',
+        [{text: 'OK', onPress: () => console.log('OK Pressed')}],
+      );
+    } else {
+      setDialogVisible(true);
+    }
+  };
 
   const navigation = useNavigation();
 
-  const isFocused = useIsFocused()
-    useEffect(() => {
+  const isFocused = useIsFocused();
+  useEffect(() => {
     async function fetchData() {
       try {
         const fetchedWorkouts = await getAllWorkoutsInProgress();
@@ -56,14 +63,13 @@ const WorkoutCreate: React.FC<WorkoutCreateProps> = ({}) => {
   };
 
   const createWorkout = async () => {
-  
     const idOfCreatedWorkout = await addWorkout(nameOfWorkout);
     setNameOfWorkout('');
     setDialogVisible(false);
     (navigation as any).navigate('WorkoutPage', {
       workoutId: idOfCreatedWorkout,
     });
-  setNameOfWorkout('');
+    setNameOfWorkout('');
     setDialogVisible(false);
   };
 

@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { MuscleGroup } from '../../../model/MuscleGroup';
-import { fetchMuscleGroups } from '../../../service/MuscleService';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   Text,
@@ -11,9 +9,8 @@ import {
   TouchableWithoutFeedback,
   Image,
 } from 'react-native';
-import { fetchExerciseConfigsForMuscleGroup } from '../../../service/ExerciseConfigService';
-import { useNavigation } from '@react-navigation/native';
-import Body, { BodyPart } from 'react-native-body-highlighter'; // Wrapping Body component in the import block
+import {useNavigation} from '@react-navigation/native';
+import Body, {BodyPart} from 'react-native-body-highlighter'; // Wrapping Body component in the import block
 
 type MuscleGroupsCategoryCardProps = {
   muscleId: number;
@@ -21,11 +18,9 @@ type MuscleGroupsCategoryCardProps = {
   muscleName: string;
 };
 
-export const MuscleGroupsCategoryCard: React.FC<MuscleGroupsCategoryCardProps> = ({
-  muscleId,
-  workoutId,
-  muscleName,
-}) => {
+export const MuscleGroupsCategoryCard: React.FC<
+  MuscleGroupsCategoryCardProps
+> = ({muscleId, workoutId, muscleName}) => {
   const navigation = useNavigation();
 
   return (
@@ -76,12 +71,12 @@ type MuscleGroupImages = {
 };
 
 const imageMuscleGroupMap: MuscleGroupImages = {
-  'SHOULDERS': require('../../../assets/muscle-groups/shoulder.png'),
-  'CHEST': require('../../../assets/muscle-groups/chest.png'),
-  'TRICEPS': require('../../../assets/muscle-groups/biceps.png'), // FIX ME TODO 
-  'CORE': require('../../../assets/muscle-groups/core.png'),
-  'BACK': require('../../../assets/muscle-groups/back.png'),
-  'LEGS': require('../../../assets/muscle-groups/legs.png'),
-  'CALVES': require('../../../assets/muscle-groups/calves.png'),
-  'BICEPS': require('../../../assets/muscle-groups/biceps.png'),
-}
+  SHOULDERS: require('../../../../assets/muscle-groups/shoulder.png'),
+  CHEST: require('../../../../assets/muscle-groups/chest.png'),
+  TRICEPS: require('../../../../assets/muscle-groups/biceps.png'), // FIX ME TODO
+  CORE: require('../../../../assets/muscle-groups/core.png'),
+  BACK: require('../../../../assets/muscle-groups/back.png'),
+  LEGS: require('../../../../assets/muscle-groups/legs.png'),
+  CALVES: require('../../../../assets/muscle-groups/calves.png'),
+  BICEPS: require('../../../../assets/muscle-groups/biceps.png'),
+};

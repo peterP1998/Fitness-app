@@ -9,7 +9,7 @@ import {PageTitle} from '../../common/pageTitle/PageTitle';
 type PreviousWorkoutPageProps = {};
 
 export const PreviousWorkoutsPage: React.FC<
-PreviousWorkoutPageProps
+  PreviousWorkoutPageProps
 > = ({}) => {
   const [workouts, setWorkouts] = useState<Workout[]>([]);
   useEffect(() => {
