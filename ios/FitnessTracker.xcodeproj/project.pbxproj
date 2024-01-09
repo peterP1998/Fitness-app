@@ -14,6 +14,13 @@
 		63FD90A2C0338800976A6CF8 /* libPods-FitnessTracker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E6767292B63F7FABA8996DC /* libPods-FitnessTracker.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		A0F5F93C59088A12329919FB /* libPods-FitnessTracker-FitnessTrackerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A1707AAC87EEFF85DF6166D /* libPods-FitnessTracker-FitnessTrackerTests.a */; };
+		D1EA2E4F2B4C5464004E2A30 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
+		D1EA2E502B4C5464004E2A30 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		D1EA2E522B4C5464004E2A30 /* libPods-FitnessTracker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E6767292B63F7FABA8996DC /* libPods-FitnessTracker.a */; };
+		D1EA2E542B4C5464004E2A30 /* www in Resources */ = {isa = PBXBuildFile; fileRef = D1EBF4C32B47348400D31719 /* www */; };
+		D1EA2E552B4C5464004E2A30 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		D1EA2E562B4C5464004E2A30 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		D1EA2E572B4C5464004E2A30 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = D1EBF4B72B3A385700D31719 /* Fonts */; };
 		D1EBF4B82B3A385700D31719 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = D1EBF4B72B3A385700D31719 /* Fonts */; };
 		D1EBF4C42B47348400D31719 /* www in Resources */ = {isa = PBXBuildFile; fileRef = D1EBF4C32B47348400D31719 /* www */; };
 /* End PBXBuildFile section */
@@ -45,6 +52,8 @@
 		6A1707AAC87EEFF85DF6166D /* libPods-FitnessTracker-FitnessTrackerTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FitnessTracker-FitnessTrackerTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = FitnessTracker/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AE442A986316ECDCE8401760 /* Pods-FitnessTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitnessTracker.debug.xcconfig"; path = "Target Support Files/Pods-FitnessTracker/Pods-FitnessTracker.debug.xcconfig"; sourceTree = "<group>"; };
+		D1EA2E5E2B4C5464004E2A30 /* FitnessTracker copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FitnessTracker copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1EA2E5F2B4C5464004E2A30 /* FitnessTracker copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "FitnessTracker copy-Info.plist"; path = "/Users/petarpetrov/Documents/FitnessTracker/ios/FitnessTracker copy-Info.plist"; sourceTree = "<absolute>"; };
 		D1EBF4B72B3A385700D31719 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Fonts; path = "../node_modules/react-native-vector-icons/Fonts"; sourceTree = "<group>"; };
 		D1EBF4C32B47348400D31719 /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; name = www; path = ../www; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -64,6 +73,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				63FD90A2C0338800976A6CF8 /* libPods-FitnessTracker.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D1EA2E512B4C5464004E2A30 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D1EA2E522B4C5464004E2A30 /* libPods-FitnessTracker.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,6 +145,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				D1EA2E5F2B4C5464004E2A30 /* FitnessTracker copy-Info.plist */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -139,6 +157,7 @@
 			children = (
 				13B07F961A680F5B00A75B9A /* FitnessTracker.app */,
 				00E356EE1AD99517003FC87E /* FitnessTrackerTests.xctest */,
+				D1EA2E5E2B4C5464004E2A30 /* FitnessTracker copy.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -199,13 +218,35 @@
 			productReference = 13B07F961A680F5B00A75B9A /* FitnessTracker.app */;
 			productType = "com.apple.product-type.application";
 		};
+		D1EA2E4C2B4C5464004E2A30 /* FitnessTracker copy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D1EA2E5B2B4C5464004E2A30 /* Build configuration list for PBXNativeTarget "FitnessTracker copy" */;
+			buildPhases = (
+				D1EA2E4D2B4C5464004E2A30 /* [CP] Check Pods Manifest.lock */,
+				D1EA2E4E2B4C5464004E2A30 /* Sources */,
+				D1EA2E512B4C5464004E2A30 /* Frameworks */,
+				D1EA2E532B4C5464004E2A30 /* Resources */,
+				D1EA2E582B4C5464004E2A30 /* Bundle React Native code and images */,
+				D1EA2E592B4C5464004E2A30 /* [CP] Embed Pods Frameworks */,
+				D1EA2E5A2B4C5464004E2A30 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "FitnessTracker copy";
+			productName = FitnessTracker;
+			productReference = D1EA2E5E2B4C5464004E2A30 /* FitnessTracker copy.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1210;
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
@@ -231,6 +272,7 @@
 			targets = (
 				13B07F861A680F5B00A75B9A /* FitnessTracker */,
 				00E356ED1AD99517003FC87E /* FitnessTrackerTests */,
+				D1EA2E4C2B4C5464004E2A30 /* FitnessTracker copy */,
 			);
 		};
 /* End PBXProject section */
@@ -251,6 +293,17 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				D1EBF4B82B3A385700D31719 /* Fonts in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D1EA2E532B4C5464004E2A30 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D1EA2E542B4C5464004E2A30 /* www in Resources */,
+				D1EA2E552B4C5464004E2A30 /* LaunchScreen.storyboard in Resources */,
+				D1EA2E562B4C5464004E2A30 /* Images.xcassets in Resources */,
+				D1EA2E572B4C5464004E2A30 /* Fonts in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,6 +438,78 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FitnessTracker-FitnessTrackerTests/Pods-FitnessTracker-FitnessTrackerTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D1EA2E4D2B4C5464004E2A30 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FitnessTracker-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D1EA2E582B4C5464004E2A30 /* Bundle React Native code and images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/.xcode.env.local",
+				"$(SRCROOT)/.xcode.env",
+			);
+			name = "Bundle React Native code and images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
+		};
+		D1EA2E592B4C5464004E2A30 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FitnessTracker/Pods-FitnessTracker-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FitnessTracker/Pods-FitnessTracker-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FitnessTracker/Pods-FitnessTracker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D1EA2E5A2B4C5464004E2A30 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FitnessTracker/Pods-FitnessTracker-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FitnessTracker/Pods-FitnessTracker-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FitnessTracker/Pods-FitnessTracker-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -405,6 +530,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D1EA2E4E2B4C5464004E2A30 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D1EA2E4F2B4C5464004E2A30 /* AppDelegate.mm in Sources */,
+				D1EA2E502B4C5464004E2A30 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -421,6 +555,8 @@
 			baseConfigurationReference = 2A69A98674715864B522DD8B /* Pods-FitnessTracker-FitnessTrackerTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				DEVELOPMENT_TEAM = MLSWZ6VNT9;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -438,6 +574,7 @@
 					"$(inherited)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = org.reactjs.native.example.FitnessTrackerForYouTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FitnessTracker.app/FitnessTracker";
 			};
@@ -481,6 +618,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"${inherited}",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)",
+				);
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -488,6 +630,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = org.reactjs.native.example.FitnessTrackerForYou;
 				PRODUCT_NAME = FitnessTracker;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -508,6 +651,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"${inherited}",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)",
+				);
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -515,6 +663,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = org.reactjs.native.example.FitnessTrackerForYou;
 				PRODUCT_NAME = FitnessTracker;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -554,6 +703,7 @@
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -634,6 +784,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -674,6 +825,72 @@
 			};
 			name = Release;
 		};
+		D1EA2E5C2B4C5464004E2A30 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AE442A986316ECDCE8401760 /* Pods-FitnessTracker.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MLSWZ6VNT9;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "FitnessTracker copy-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"${inherited}",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = org.reactjs.native.example.FitnessTrackerForYou;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		D1EA2E5D2B4C5464004E2A30 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2BF7ACB903CA62CA1B8BB282 /* Pods-FitnessTracker.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MLSWZ6VNT9;
+				INFOPLIST_FILE = "FitnessTracker copy-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"${inherited}",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = org.reactjs.native.example.FitnessTrackerForYou;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -700,6 +917,15 @@
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
 				83CBBA211A601CBA00E9B192 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D1EA2E5B2B4C5464004E2A30 /* Build configuration list for PBXNativeTarget "FitnessTracker copy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D1EA2E5C2B4C5464004E2A30 /* Debug */,
+				D1EA2E5D2B4C5464004E2A30 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

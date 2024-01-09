@@ -17,7 +17,7 @@ import {PageTitle} from '../../common/pageTitle/PageTitle';
 export default function DataPage() {
   return (
     <SafeAreaView>
-      <PageTitle title={'Workout data'} /> 
+      <PageTitle title={'Workout data'} />
       <DataWorkout />
     </SafeAreaView>
   );

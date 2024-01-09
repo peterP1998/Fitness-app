@@ -9,6 +9,8 @@ import {
   TextInput,
   TouchableWithoutFeedback,
   Alert,
+  KeyboardAvoidingView,
+  Platform,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import React, {useEffect, useState} from 'react';
@@ -87,27 +89,30 @@ const WorkoutCreate: React.FC<WorkoutCreateProps> = ({}) => {
         onRequestClose={handleCancel}
         style={styles.modal}
         onDismiss={handleCancel}>
-        <TouchableWithoutFeedback
-          style={styles.touchableOpacity}
-          onPressOut={e => {
-            handleCancel();
-          }}>
-          <View style={styles.modalContainer}>
-            <View style={styles.modalContent}>
-              <Text style={styles.textCreateWorkout}>Create workout</Text>
-              <TextInput
-                style={styles.input}
-                onChangeText={setNameOfWorkout}
-                value={nameOfWorkout}
-                placeholder="Name of workout"
-                textAlign="center"
-              />
-              <Pressable style={styles.button} onPress={createWorkout}>
-                <Text style={styles.buttonText}>Add</Text>
-              </Pressable>
+        <KeyboardAvoidingView
+          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+          <TouchableWithoutFeedback
+            style={styles.touchableOpacity}
+            onPressOut={e => {
+              handleCancel();
+            }}>
+            <View style={styles.modalContainer}>
+              <View style={styles.modalContent}>
+                <Text style={styles.textCreateWorkout}>Create workout</Text>
+                <TextInput
+                  style={styles.input}
+                  onChangeText={setNameOfWorkout}
+                  value={nameOfWorkout}
+                  placeholder="Name of workout"
+                  textAlign="center"
+                />
+                <Pressable style={styles.button} onPress={createWorkout}>
+                  <Text style={styles.buttonText}>Add</Text>
+                </Pressable>
+              </View>
             </View>
-          </View>
-        </TouchableWithoutFeedback>
+          </TouchableWithoutFeedback>
+        </KeyboardAvoidingView>
       </Modal>
     </>
   );

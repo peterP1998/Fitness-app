@@ -5,7 +5,9 @@ import {
   getSetsForExercise,
 } from '../../../service/ExerciseSetService';
 import {
+  KeyboardAvoidingView,
   Modal,
+  Platform,
   Pressable,
   StyleSheet,
   Text,
@@ -85,34 +87,39 @@ export const ExerciseDetails = () => {
         onRequestClose={handleCancel}
         style={styles.modal}
         onDismiss={handleCancel}>
-        <TouchableWithoutFeedback
-          style={styles.touchableOpacity}
-          onPressOut={e => {
-            handleCancel();
-          }}>
-          <View style={styles.modalContainer}>
-            <View style={styles.modalContent}>
-              <Text style={styles.textCreateWorkout}>Add set to exercise</Text>
-              <TextInput
-                style={styles.input}
-                onChangeText={setNumberOfReps}
-                value={numberOfReps}
-                placeholder="Number of reps"
-                textAlign="center"
-              />
-              <TextInput
-                style={styles.input}
-                onChangeText={setWeight}
-                value={weight}
-                placeholder="Weight"
-                textAlign="center"
-              />
-              <Pressable style={styles.button} onPress={addSetToExerciseFunc}>
-                <Text style={styles.buttonText}>Add</Text>
-              </Pressable>
+        <KeyboardAvoidingView
+          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+          <TouchableWithoutFeedback
+            style={styles.touchableOpacity}
+            onPressOut={e => {
+              handleCancel();
+            }}>
+            <View style={styles.modalContainer}>
+              <View style={styles.modalContent}>
+                <Text style={styles.textCreateWorkout}>
+                  Add set to exercise
+                </Text>
+                <TextInput
+                  style={styles.input}
+                  onChangeText={setNumberOfReps}
+                  value={numberOfReps}
+                  placeholder="Number of reps"
+                  textAlign="center"
+                />
+                <TextInput
+                  style={styles.input}
+                  onChangeText={setWeight}
+                  value={weight}
+                  placeholder="Weight"
+                  textAlign="center"
+                />
+                <Pressable style={styles.button} onPress={addSetToExerciseFunc}>
+                  <Text style={styles.buttonText}>Add</Text>
+                </Pressable>
+              </View>
             </View>
-          </View>
-        </TouchableWithoutFeedback>
+          </TouchableWithoutFeedback>
+        </KeyboardAvoidingView>
       </Modal>
       <PageTitle title={exerciseName} isDeletable={false} />
       <View style={styles.table}>
